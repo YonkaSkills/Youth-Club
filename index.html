@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading...</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; }
+    body { background:#FFFFFF; display:flex; align-items:center; justify-content:center; }
+    .loader {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:1.2rem; /* balanced spacing */
+    }
+    .loader video {
+      max-width:30vw; max-height:30vh; width:auto; height:auto;
+    }
+    .loader .bar {
+      max-width:40vw; max-height:5vh; width:auto; height:auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <video src="Logo Loading.webm" autoplay muted playsinline></video>
+    <video class="bar" src="Loading Bar.mp4" autoplay muted playsinline loop></video>
+  </div>
+</body>
+</html>
