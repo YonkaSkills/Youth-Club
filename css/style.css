@@ -165,29 +165,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   display:none !important;
 }
 
-/* ---------- Preloader ---------- */
-.preloader{
-  position:fixed; inset:0; z-index:9999;
-  background:#fff;
-  display:flex; align-items:center; justify-content:center;
-  transition:opacity .5s ease;
-}
-.pre-inner{ text-align:center; }
-.pre-inner .logo-wrap{
-  display:flex; align-items:center; justify-content:center;
-  margin-bottom:18px;
-}
-.pre-inner .logo-wrap img{ width:60px; height:60px; object-fit:contain; }
-.pre-inner .logo{
-  font-family:var(--font-heading);
-  font-size:26px;
-  font-weight:800;
-  color:var(--heading);
-  margin-bottom:18px;
-}
-.pre-bar{ width:180px; height:3px; background:var(--section-bg); border-radius:3px; overflow:hidden; margin:0 auto; }
-.pre-bar-fill{ width:0%; height:100%; background:var(--primary-gradient); transition:width .15s ease; }
-.pre-pct{ margin-top:14px; font-size:13px; color:var(--muted); letter-spacing:1px; font-family:var(--font-body); }
+
 
 /* ---------- Topbar ---------- */
 /* ---------- Topbar ---------- */

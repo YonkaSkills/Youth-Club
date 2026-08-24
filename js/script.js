@@ -1,24 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---------- Preloader ---------- */
-  const pre = document.querySelector('.preloader');
-  if (pre) {
-    const pct = pre.querySelector('.pre-pct');
-    const bar = pre.querySelector('.pre-bar-fill');
-    let p = 0;
-    const t = setInterval(() => {
-      p += Math.random() * 18 + 8;
-      if (p >= 100) { p = 100; clearInterval(t); }
-      if (pct) pct.textContent = Math.floor(p) + '%';
-      if (bar) bar.style.width = p + '%';
-      if (p === 100) {
-        setTimeout(() => {
-          pre.style.opacity = '0';
-          setTimeout(() => pre.remove(), 500);
-        }, 250);
-      }
-    }, 140);
-  }
+
 
   /* ---------- Navbar scroll state ---------- */
   const nav = document.querySelector('.navbar');
