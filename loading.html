@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading…</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #FFFFFF; /* white background */
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;      /* vertical centering */
+      justify-content: center;  /* horizontal centering */
+      gap: 12px;                /* space between videos */
+    }
+    video {
+      max-width: 150px;   /* keep small, preserve aspect ratio */
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <video src="videos/Logo Loading.webm" autoplay muted loop playsinline></video>
+  <video src="videos/Loading Bar.mp4" autoplay muted loop playsinline></video>
+  <script>
+    // Hide the loading screen after 1.5 seconds (1500ms)
+    setTimeout(() => {
+      document.body.innerHTML = '';
+    }, 1500);
+  </script>
+</body>
+</html>

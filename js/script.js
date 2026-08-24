@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
+   
+   /* ---------- Navbar scroll state ---------- */
 
-  /* ---------- Navbar scroll state ---------- */
   const nav = document.querySelector('.navbar');
   const onScroll = () => {
     if (window.scrollY > 30) nav?.classList.add('scrolled');
