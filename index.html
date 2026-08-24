@@ -19,6 +19,15 @@
   <video src="videos/Logo Loading.webm" autoplay muted loop playsinline style="max-width:150px;height:auto;"></video>
   <video src="videos/Loading Bar.mp4" autoplay muted loop playsinline style="max-width:150px;height:auto;margin-top:12px;"></video>
 </div>
+<script>
+  (function() {
+    const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+    const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+    if (!isReload && isInternal) {
+      document.getElementById('loadingOverlay').style.display = 'none';
+    }
+  })();
+</script>
 
 
 
@@ -477,14 +486,21 @@
 
 <script src="js/script.js"></script>
 <script>
-  // Remove loading overlay after exactly 1.5 seconds
-  setTimeout(() => {
+  (function() {
     const overlay = document.getElementById('loadingOverlay');
     if (overlay) {
-      overlay.style.opacity = '0';
-      overlay.addEventListener('transitionend', () => overlay.remove());
+      const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+      const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+      if (isReload || !isInternal) {
+        setTimeout(() => {
+          overlay.style.opacity = '0';
+          overlay.addEventListener('transitionend', () => overlay.remove());
+        }, 1500);
+      } else {
+        overlay.remove();
+      }
     }
-  }, 1500);
+  })();
 </script>
 </body>
 </html>
