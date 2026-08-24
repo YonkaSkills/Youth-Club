@@ -200,4 +200,138 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ============================================
+     PHOTO SPOTLIGHT GALLERY SLIDER
+     ============================================ */
+  (function(){
+    const track      = document.getElementById('spotlightTrack');
+    if (!track) return;
+
+    const cards      = Array.from(track.querySelectorAll('.spotlight-card'));
+    const prevBtn    = document.getElementById('spotlightPrev');
+    const nextBtn    = document.getElementById('spotlightNext');
+    const counterEl  = document.getElementById('spotlightCurrent');
+    const totalEl    = document.getElementById('spotlightTotal');
+    const lightbox   = document.getElementById('spotlightLightbox');
+    const lbImg      = document.getElementById('lightboxImg');
+    const lbLabel    = document.getElementById('lightboxLabel');
+    const lbClose    = document.getElementById('lightboxClose');
+    const lbBackdrop = document.getElementById('lightboxBackdrop');
+    const lbPrev     = document.getElementById('lightboxPrev');
+    const lbNext     = document.getElementById('lightboxNext');
+
+    const total = cards.length;
+    let activeIdx = 1;   // start on card index 1 (second card = centre)
+    let lbActiveIdx = 0;
+
+    if (totalEl) totalEl.textContent = total;
+
+    /* ---- Build image data for lightbox ---- */
+    const cardData = cards.map(c => ({
+      src:   c.querySelector('img').src,
+      label: c.querySelector('.spotlight-label').textContent.trim()
+    }));
+
+    /* ---- Compute card width + gap for translate ---- */
+    function getCardWidth() {
+      if (!cards[0]) return 0;
+      const style = getComputedStyle(track);
+      const gap   = parseFloat(style.gap) || 20;
+      return cards[0].offsetWidth + gap;
+    }
+
+    /* ---- Position track so active card is centred ---- */
+    function setActive(idx) {
+      activeIdx = ((idx % total) + total) % total;
+      cards.forEach((c, i) => c.classList.toggle('active', i === activeIdx));
+
+      const wrap      = track.parentElement;
+      const wrapW     = wrap.offsetWidth;
+      const cardW     = getCardWidth();
+      const gap       = parseFloat(getComputedStyle(track).gap) || 20;
+      // offset = left padding of track + number of cards before active * (card+gap) - centering offset
+      const offsetX   = -(activeIdx * cardW) + (wrapW / 2) - (cards[0].offsetWidth / 2);
+      track.style.transform = `translateX(${offsetX}px)`;
+
+      if (counterEl) counterEl.textContent = activeIdx + 1;
+    }
+
+    /* ---- Click any card to make it active; if already active, open lightbox ---- */
+    cards.forEach((c, i) => {
+      c.addEventListener('click', () => {
+        if (i === activeIdx) {
+          openLightbox(i);
+        } else {
+          setActive(i);
+        }
+      });
+    });
+
+    /* ---- Prev / Next buttons ---- */
+    prevBtn && prevBtn.addEventListener('click', () => setActive(activeIdx - 1));
+    nextBtn && nextBtn.addEventListener('click', () => setActive(activeIdx + 1));
+
+    /* ---- Auto-play ---- */
+    let autoTimer = setInterval(() => setActive(activeIdx + 1), 4500);
+    function resetAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => setActive(activeIdx + 1), 4500);
+    }
+    prevBtn && prevBtn.addEventListener('click', resetAuto);
+    nextBtn && nextBtn.addEventListener('click', resetAuto);
+
+    /* ---- Touch / swipe support ---- */
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) { dx < 0 ? setActive(activeIdx+1) : setActive(activeIdx-1); resetAuto(); }
+    });
+
+    /* ---- Lightbox ---- */
+    function openLightbox(idx) {
+      lbActiveIdx = idx;
+      lbImg.src   = cardData[idx].src;
+      lbImg.alt   = cardData[idx].label;
+      lbLabel.textContent = cardData[idx].label;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function lbGo(dir) {
+      lbActiveIdx = ((lbActiveIdx + dir + total) % total);
+      lbImg.style.opacity = '0';
+      lbImg.style.transform = 'scale(0.96)';
+      setTimeout(() => {
+        lbImg.src = cardData[lbActiveIdx].src;
+        lbImg.alt = cardData[lbActiveIdx].label;
+        lbLabel.textContent = cardData[lbActiveIdx].label;
+        lbImg.style.opacity = '1';
+        lbImg.style.transform = 'scale(1)';
+      }, 200);
+    }
+
+    lbImg.style.transition = 'opacity 0.2s, transform 0.2s';
+    lbImg.style.opacity = '1'; lbImg.style.transform = 'scale(1)';
+
+    lbClose    && lbClose.addEventListener('click', closeLightbox);
+    lbBackdrop && lbBackdrop.addEventListener('click', closeLightbox);
+    lbPrev     && lbPrev.addEventListener('click', () => lbGo(-1));
+    lbNext     && lbNext.addEventListener('click', () => lbGo(1));
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')       closeLightbox();
+      if (e.key === 'ArrowLeft')    lbGo(-1);
+      if (e.key === 'ArrowRight')   lbGo(1);
+    });
+
+    /* ---- Init ---- */
+    setActive(activeIdx);
+    window.addEventListener('resize', () => setActive(activeIdx));
+  })();
+
 });
