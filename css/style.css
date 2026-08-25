@@ -94,6 +94,8 @@ p{ margin:0; color:var(--body); }
 
 ::selection{ background:var(--primary); color:#fff; }
 
+
+
 /* focus visibility */
 a:focus-visible, button:focus-visible, input:focus-visible{
   outline:2px solid var(--primary);
@@ -417,6 +419,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 }
 .dropdown-menu{
   position: absolute;
+<<<<<<< HEAD
   top: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%) translateY(8px) scale(0.97);
@@ -455,6 +458,44 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   visibility: visible;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0) scale(1);
+=======
+  top: 100%;          /* flush against the li — zero gap */
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: #fff;
+  min-width: 200px;
+  padding: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(20,30,70,.10);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--primary);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .22s ease, visibility .22s ease, transform .22s ease;
+}
+/* JS adds this class on mouseenter of the li — it is the single source of truth */
+.dropdown.is-open > .dropdown-menu{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.dropdown-menu a{
+  display: block;
+  padding: 10px 22px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: var(--body);
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+.dropdown-menu a:hover{
+  background: var(--section-bg);
+  color: var(--primary);
+  border-left-color: var(--primary);
+>>>>>>> 8f02fb9729e15b5f7a90db336cb78ddc80411ab7
 }
 
 /* Dropdown Grid (for Sports / Multi-column boxes) */
