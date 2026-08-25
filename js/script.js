@@ -48,46 +48,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   overlay?.addEventListener('click', closeNav);
 
-<<<<<<< HEAD
-  // Dropdown toggles (supports both click and touch on all devices)
+  // Desktop dropdown hover handling
+  dropdowns.forEach(li => {
+    li.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 991) li.classList.add('open');
+    });
+    li.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 991) li.classList.remove('open');
+    });
+  });
+
+  // Mobile & click dropdown toggles
   dropdowns.forEach(dropdown => {
     const trigger = dropdown.querySelector(':scope > a');
     if (!trigger) return;
 
     trigger.addEventListener('click', (e) => {
-      // Toggle dropdown box on click
-      const isOpen = dropdown.classList.contains('open');
-      
-      // Close other open dropdowns
-      dropdowns.forEach(d => {
-        if (d !== dropdown) d.classList.remove('open');
-      });
-
-      if (!isOpen) {
-=======
-  // Desktop dropdown: open on mouseenter of li, close on mouseleave of li
-  // The li contains BOTH the trigger link AND the dropdown-menu, so the
-  // hover zone is the entire parent — no gap, no premature close.
-  document.querySelectorAll('.nav-links .dropdown').forEach(li => {
-    li.addEventListener('mouseenter', () => {
-      if (window.innerWidth > 991) li.classList.add('is-open');
-    });
-    li.addEventListener('mouseleave', () => {
-      if (window.innerWidth > 991) li.classList.remove('is-open');
-    });
-  });
-
-  // Mobile dropdown toggles on click
-  document.querySelectorAll('.nav-links .dropdown > a').forEach(a => {
-    a.addEventListener('click', (e) => {
-      if (window.innerWidth <= 991) {
->>>>>>> 8f02fb9729e15b5f7a90db336cb78ddc80411ab7
+      if (window.innerWidth <= 991 || trigger.getAttribute('href') === '#' || trigger.getAttribute('href') === 'javascript:void(0)') {
         e.preventDefault();
-        dropdown.classList.add('open');
-      } else {
-        // If already open on mobile, toggle off
-        if (window.innerWidth <= 991 || trigger.getAttribute('href') === '#') {
-          e.preventDefault();
+        const isOpen = dropdown.classList.contains('open');
+        dropdowns.forEach(d => {
+          if (d !== dropdown) d.classList.remove('open');
+        });
+        if (!isOpen) {
+          dropdown.classList.add('open');
+        } else {
           dropdown.classList.remove('open');
         }
       }
