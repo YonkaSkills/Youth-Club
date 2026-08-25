@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
-   
-   /* ---------- Navbar scroll state ---------- */
 
   const nav = document.querySelector('.navbar');
   const onScroll = () => {
@@ -48,7 +46,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   overlay?.addEventListener('click', closeNav);
 
-  // Dropdown toggles on mobile
+  // Desktop dropdown: open on mouseenter of li, close on mouseleave of li
+  // The li contains BOTH the trigger link AND the dropdown-menu, so the
+  // hover zone is the entire parent — no gap, no premature close.
+  document.querySelectorAll('.nav-links .dropdown').forEach(li => {
+    li.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 991) li.classList.add('is-open');
+    });
+    li.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 991) li.classList.remove('is-open');
+    });
+  });
+
+  // Mobile dropdown toggles on click
   document.querySelectorAll('.nav-links .dropdown > a').forEach(a => {
     a.addEventListener('click', (e) => {
       if (window.innerWidth <= 991) {

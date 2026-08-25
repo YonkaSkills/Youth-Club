@@ -94,6 +94,8 @@ p{ margin:0; color:var(--body); }
 
 ::selection{ background:var(--primary); color:#fff; }
 
+
+
 /* focus visibility */
 a:focus-visible, button:focus-visible, input:focus-visible{
   outline:2px solid var(--primary);
@@ -354,9 +356,9 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .nav-links .dropdown{ position: relative; }
 .dropdown-menu{
   position: absolute;
-  top: calc(100% + 14px);
+  top: 100%;          /* flush against the li — zero gap */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(6px);
   background: #fff;
   min-width: 200px;
   padding: 10px 0;
@@ -366,12 +368,14 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   border-top: 3px solid var(--primary);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity .22s ease, visibility .22s ease, transform .22s ease;
-  transform: translateX(-50%) translateY(6px);
 }
-.dropdown:hover .dropdown-menu{
+/* JS adds this class on mouseenter of the li — it is the single source of truth */
+.dropdown.is-open > .dropdown-menu{
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
 .dropdown-menu a{
