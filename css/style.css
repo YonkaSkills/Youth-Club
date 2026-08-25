@@ -203,20 +203,19 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   font-weight: 300;
   user-select: none;
 }
-/* Golden yellow circular badge */
+/* Light yellow circular badge */
 .topbar-icon-badge{
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 24px; height: 24px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #FFD54F 0%, #FFB300 100%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #1a134a;
+  background: rgba(255, 220, 90, 0.18);
+  border: 1px solid rgba(255, 210, 60, 0.45);
+  color: #F5C518;
   font-size: 11px;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(255, 179, 0, 0.35);
-  font-weight: 700;
+  box-shadow: 0 1px 6px rgba(255, 200, 50, 0.2);
 }
 .topbar-item{
   display: flex;
