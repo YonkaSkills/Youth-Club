@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('scroll', onScroll);
   onScroll();
 
-  /* ---------- Mobile nav & Overlay ---------- */
+  /* ---------- Navbar & Dropdown Interactions ---------- */
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
+  const dropdowns = document.querySelectorAll('.nav-links .dropdown');
   
   // Create overlay if not present
   let overlay = document.querySelector('.nav-overlay');
@@ -32,39 +33,71 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle?.classList.remove('open');
     overlay?.classList.remove('active');
     document.body.style.overflow = '';
+    dropdowns.forEach(d => d.classList.remove('open'));
   };
 
   const openNav = () => {
     links?.classList.add('open');
     toggle?.classList.add('open');
     overlay?.classList.add('active');
-    document.body.style.overflow = 'hidden';
   };
 
-  toggle?.addEventListener('click', () => {
+  toggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (links?.classList.contains('open')) closeNav();
     else openNav();
   });
 
   overlay?.addEventListener('click', closeNav);
 
-  // Dropdown toggles on mobile
-  document.querySelectorAll('.nav-links .dropdown > a').forEach(a => {
-    a.addEventListener('click', (e) => {
-      if (window.innerWidth <= 991) {
+  // Dropdown toggles (supports both click and touch on all devices)
+  dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector(':scope > a');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', (e) => {
+      // Toggle dropdown box on click
+      const isOpen = dropdown.classList.contains('open');
+      
+      // Close other open dropdowns
+      dropdowns.forEach(d => {
+        if (d !== dropdown) d.classList.remove('open');
+      });
+
+      if (!isOpen) {
         e.preventDefault();
-        const parent = a.parentElement;
-        const isOpen = parent.classList.contains('open');
-        // Close other dropdowns
-        document.querySelectorAll('.nav-links .dropdown').forEach(d => {
-          if (d !== parent) d.classList.remove('open');
-        });
-        parent.classList.toggle('open', !isOpen);
+        dropdown.classList.add('open');
+      } else {
+        // If already open on mobile, toggle off
+        if (window.innerWidth <= 991 || trigger.getAttribute('href') === '#') {
+          e.preventDefault();
+          dropdown.classList.remove('open');
+        }
       }
     });
   });
 
-  // Close nav on regular link click on mobile
+  // Close dropdowns on clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown')) {
+      dropdowns.forEach(d => d.classList.remove('open'));
+    }
+    if (!e.target.closest('.nav-links') && !e.target.closest('.nav-toggle')) {
+      if (links?.classList.contains('open')) {
+        closeNav();
+      }
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeNav();
+      dropdowns.forEach(d => d.classList.remove('open'));
+    }
+  });
+
+  // Close nav on non-dropdown link click
   document.querySelectorAll('.nav-links a:not(.dropdown > a)').forEach(a => {
     a.addEventListener('click', () => {
       if (window.innerWidth <= 991) closeNav();

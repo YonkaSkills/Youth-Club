@@ -1,506 +1,589 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Youth Club — Youth Cultural Association Bhimavaram</title>
-<meta name="description" content="Youth Cultural Association (Youth Club) is a premier recreational club in Bhimavaram, Andhra Pradesh, offering sports, rooms, restaurant, and cultural activities for members.">
-<meta name="keywords" content="Youth Club, Youth Cultural Association, Bhimavaram, Bhimavaram Club, Tennis Courts, Sports Club, Rooms, Hotel, Lodging, Members">
-<meta name="robots" content="index, follow">
-<meta name="author" content="Youth Cultural Association Bhimavaram">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Youth Club — Youth Cultural Association Bhimavaram</title>
+  <meta name="description"
+    content="Youth Cultural Association (Youth Club) is a premier recreational club in Bhimavaram, Andhra Pradesh, offering sports, rooms, restaurant, and cultural activities for members.">
+  <meta name="keywords"
+    content="Youth Club, Youth Cultural Association, Bhimavaram, Bhimavaram Club, Tennis Courts, Sports Club, Rooms, Hotel, Lodging, Members">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Youth Cultural Association Bhimavaram">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.4s ease;">
-  <video src="videos/Logo Loading.webm" autoplay muted loop playsinline style="max-width:150px;height:auto;"></video>
-  <video src="videos/Loading Bar.mp4" autoplay muted loop playsinline style="max-width:150px;height:auto;margin-top:12px;"></video>
-</div>
-<script>
-  (function() {
-    const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
-    const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
-    if (!isReload && isInternal) {
-      document.getElementById('loadingOverlay').style.display = 'none';
-    }
-  })();
-</script>
-
-
-
-
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-left">
-      <a href="tel:+919133311326" class="topbar-item">
-        <span class="topbar-icon-badge"><i class="fa-solid fa-phone"></i></span>
-        <strong>9133311326</strong>
-      </a>
-      <span class="topbar-sep">|</span>
-      <a href="https://maps.google.com/?q=Tammi+Raju+Nagar+Bhimavaram" class="topbar-item" target="_blank" rel="noopener">
-        <span class="topbar-icon-badge"><i class="fa-solid fa-location-dot"></i></span>
-        <span>Tammi Raju Nagar, Bhimavaram</span>
-      </a>
-      <span class="topbar-sep">|</span>
-      <span class="topbar-item">
-        <span class="topbar-icon-badge"><i class="fa-solid fa-door-open"></i></span>
-        <span>Rooms: <strong style="color:#2ecc71;">Available</strong></span>
-      </span>
-    </div>
-    <div class="topbar-right">
-      <div class="topbar-open">
-        <span class="topbar-dot"></span>
-        <span>Open now &nbsp;&bull;&nbsp; 8am &ndash; 11pm</span>
-      </div>
-      <a href="https://www.facebook.com/" class="topbar-social-btn" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/" class="topbar-social-btn" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://wa.me/+917207080232" class="topbar-social-btn" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fa-regular fa-comment"></i></a>
-    </div>
+  <div id="loadingOverlay"
+    style="position:fixed;top:0;left:0;width:100%;height:100%;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.4s ease;">
+    <video src="videos/Logo Loading.webm" autoplay muted loop playsinline style="max-width:150px;height:auto;"></video>
+    <video src="videos/Loading Bar.mp4" autoplay muted loop playsinline
+      style="max-width:150px;height:auto;margin-top:12px;"></video>
   </div>
-</div>
-
-<!-- NAVBAR -->
-<header class="navbar" id="mainNav">
-  <div class="container">
-    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;">
-      <img src="images/logo.png" alt="Youth Cultural Association Bhimavaram">
-      <span style="display:flex;flex-direction:column;line-height:0.95;">
-        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Youth Cultural</strong>
-        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Association</strong>
-      </span>
-    </a>
-    <nav>
-      <ul class="nav-links">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li class="dropdown"><a href="about.html">Club</a>
-          <div class="dropdown-menu">
-            <a href="about.html">Club Committee</a>
-            <a href="about.html">Club Secretariat</a>
-          </div>
-        </li>
-        <li class="dropdown"><a href="#">Sports</a>
-          <div class="dropdown-menu">
-            <a href="#">Tennis</a>
-            <a href="#">Gym</a>
-            <a href="#">Shuttle</a>
-            <a href="#">Table Tennis</a>
-            <a href="#">Billiards</a>
-            <a href="#">Volley Ball</a>
-          </div>
-        </li>
-        <li><a href="rooms.html">Rooms</a></li>
-        <li><a href="restaurant.html">Restaurant</a></li>
-        <li><a href="#">Membership</a></li>
-        <li><a href="about.html">About</a></li>
-        <li class="dropdown"><a href="#">Pages</a>
-          <div class="dropdown-menu">
-            <a href="#">Gallery</a>
-            <a href="#">Events</a>
-            <a href="#">Affiliations</a>
-            <a href="contact.html">Contact</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
-    <a href="https://wa.me/+917207080232" class="btn btn-primary nav-book" target="_blank" rel="noopener"><i class="fa-solid fa-comment"></i> Contact</a>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-slide active">
-    <img src="images/hero1.jpg" alt="Youth Cultural Association Bhimavaram — Club building and tennis courts">
-    <div class="hero-content">
-      <span class="eyebrow">Welcome to Youth Club</span>
-      <h1>Youth Cultural Association Bhimavaram</h1>
-      <p>A premier recreational club in Bhimavaram, fostering sports, culture, and community for generations of valued members.</p>
-      <a href="rooms.html" class="btn btn-primary">Explore Rooms</a>
-    </div>
-  </div>
-  <div class="hero-slide">
-    <img src="images/hero2.jpg" alt="Gokaraju Ramaiah & Rajeswamma Bhavan — Youth Club Rooms">
-    <div class="hero-content">
-      <span class="eyebrow">Sports & Recreation</span>
-      <h1>World-Class Sports Facilities for Members</h1>
-      <p>Tennis courts, gymnasium, billiards, table tennis, shuttle, and volleyball — everything your active lifestyle demands.</p>
-      <a href="#sports" class="btn btn-primary">View Facilities</a>
-    </div>
-  </div>
-  <div class="hero-slide">
-    <img src="images/hero3.jpg" alt="Alluri Srirama Raju Indoor Stadium and Tennis Courts — Youth Club Bhimavaram">
-    <div class="hero-content">
-      <span class="eyebrow">Membership</span>
-      <h1>Join Our Distinguished Club Community</h1>
-      <p>Be part of Bhimavaram's most vibrant cultural and recreational institution. Exclusive facilities, events, and a warm community await.</p>
-      <a href="about.html" class="btn btn-primary">Learn More</a>
-    </div>
-  </div>
-
-  <div class="hero-arrows">
-    <button class="hero-arrow prev" aria-label="Previous slide"><i class="fa-solid fa-arrow-left"></i></button>
-    <button class="hero-arrow next" aria-label="Next slide"><i class="fa-solid fa-arrow-right"></i></button>
-  </div>
-  <div class="hero-dots">
-    <span class="hero-dot active"></span><span class="hero-dot"></span><span class="hero-dot"></span>
-  </div>
-  <div class="scroll-indicator"><span>Scroll down</span><span class="stick"></span></div>
-</section>
-
-<!-- AMENITIES / FACILITIES -->
-<section class="amenities" id="sports">
-  <div class="container">
-    <div class="amenities-grid">
-      <div class="amenity-card reveal">
-        <div class="amenity-icon"><i class="fa-solid fa-gamepad"></i></div>
-        <h4>Game Zone</h4>
-      </div>
-      <div class="amenity-card reveal reveal-delay-1">
-        <div class="amenity-icon"><i class="fa-solid fa-layer-group"></i></div>
-        <h4>All facility</h4>
-      </div>
-      <div class="amenity-card reveal reveal-delay-2">
-        <div class="amenity-icon"><i class="fa-solid fa-snowflake"></i></div>
-        <h4>Air-conditioned</h4>
-      </div>
-      <div class="amenity-card reveal reveal-delay-3">
-        <div class="amenity-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h4>Security</h4>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section-alt">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-images reveal">
-        <img class="img-main" src="images/ycaimg10.jpg" alt="Gokaraju Ranga Raju & Ramayamma Bhavan — Youth Club Entrance">
-      </div>
-      <div class="about-text reveal reveal-delay-1">
-        <span class="eyebrow">About Youth Club</span>
-        <h2 style="font-size:clamp(1.9rem,3.4vw,2.6rem); margin-bottom:22px;">Bhimavaram's Premier Sports & Cultural Club</h2>
-        <p style="margin-bottom:30px; font-size:16px;">The Youth Cultural Association of Bhimavaram is a premier recreational institution dedicated to promoting sports, culture, and community development. With state-of-the-art facilities spanning tennis courts, gymnasium, table tennis, billiards, volleyball, and shuttle, we provide an unparalleled experience for our valued members.</p>
-        <a href="about.html" class="btn btn-primary">More about us</a>
-      </div>
-    </div>
-
-    <div class="about-sub">
-      <div class="about-text reveal">
-        <span class="eyebrow">Sports & Recreation</span>
-        <h2 style="font-size:clamp(1.9rem,3.4vw,2.6rem); margin-bottom:22px;">World-Class Facilities for Every Member</h2>
-        <p style="margin-bottom:30px; font-size:16px;">From competitive tennis tournaments to relaxed billiards sessions, our facilities cater to every interest and skill level. Join hundreds of active members who call Youth Club their second home and preferred recreational destination in Bhimavaram.</p>
-        <a href="rooms.html" class="btn btn-primary">Book a Room</a>
-      </div>
-      <div class="about-images reveal reveal-delay-1" style="margin-bottom:0;">
-        <img class="img-main" src="images/ycaimg2.jpg" alt="Reception & Lobby — Youth Club Bhimavaram">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats-section">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-card reveal">
-        <div class="stat-icon-box">
-          <i class="fa-solid fa-utensils"></i>
-        </div>
-        <div class="stat-num" data-count="1">0</div>
-        <div class="stat-label">Bar &amp; Restaurant</div>
-      </div>
-
-      <div class="stat-card reveal reveal-delay-1">
-        <div class="stat-icon-box">
-          <i class="fa-solid fa-hotel"></i>
-        </div>
-        <div class="stat-num" data-count="50" data-suffix="+">0</div>
-        <div class="stat-label">Rooms</div>
-      </div>
-
-      <div class="stat-card reveal reveal-delay-2">
-        <div class="stat-icon-box">
-          <i class="fa-solid fa-trophy"></i>
-        </div>
-        <div class="stat-num" data-count="3">0</div>
-        <div class="stat-label">Rummy Halls</div>
-      </div>
-
-      <div class="stat-card reveal reveal-delay-3">
-        <div class="stat-icon-box">
-          <i class="fa-solid fa-users"></i>
-        </div>
-        <div class="stat-num" data-count="1000" data-suffix="+">0</div>
-        <div class="stat-label">Members</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BEST ROOMS -->
-<section class="section-alt" id="rooms">
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow" style="margin:0 auto 14px; padding-left:0;">Our Rooms</span>
-      <h2 style="font-size:clamp(2rem,3.6vw,2.8rem); margin-bottom:18px;">Comfortable Guest Rooms</h2>
-      <p>Our well-appointed rooms offer a comfortable stay for members and their guests, equipped with modern amenities and serene surroundings in the heart of Bhimavaram.</p>
-    </div>
-
-    <div class="rooms-grid">
-      <div class="room-card reveal">
-        <div class="room-media"><span class="room-tag">Deluxe</span><img src="images/room-deluxe.jpg" alt="Deluxe Room"></div>
-        <div class="room-body">
-          <h3>Deluxe Room</h3>
-          <p>Spacious and elegantly furnished room with modern amenities for a premium stay experience.</p>
-        </div>
-      </div>
-
-      <div class="room-card reveal reveal-delay-1">
-        <div class="room-media"><span class="room-tag">Standard</span><img src="images/room-standard.jpg" alt="Standard Room"></div>
-        <div class="room-body">
-          <h3>Standard Room</h3>
-          <p>Comfortable and well-appointed room with all essential amenities for a pleasant stay.</p>
-        </div>
-      </div>
-
-      <div class="room-card reveal reveal-delay-2">
-        <div class="room-media"><span class="room-tag">Suite</span><img src="images/room-suite.jpg" alt="Suite Room"></div>
-        <div class="room-body">
-          <h3>Suite Room</h3>
-          <p>Luxurious suite room with private lounge seating, elegant furnishings, and premium amenities.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-cta reveal">
-      <a href="rooms.html" class="btn btn-primary">All rooms</a>
-    </div>
-  </div>
-</section>
-
-<!-- AROUND THE CLUB -->
-<!-- AROUND THE CLUB -->
-<section>
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow" style="margin:0 auto 14px; padding-left:0;">Explore</span>
-      <h2 style="font-size:clamp(2rem,3.6vw,2.8rem); margin-bottom:16px;">Around The Club</h2>
-      <p>Discover our world-class facilities, vibrant grounds, and the warm community that makes Youth Club truly special.</p>
-    </div>
-
-    <div class="gallery-wrapper reveal">
-      <button class="gallery-btn prev gallery-prev" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
-
-      <div class="gallery-track-wrap">
-        <div class="gallery-track">
-          <div class="gallery-slide"><img src="images/lounge-bar.jpg" alt="Lounge Bar"><span class="gallery-caption">Lounge Bar</span></div>
-          <div class="gallery-slide"><img src="images/conference-hall.jpg" alt="Conference Hall"><span class="gallery-caption">Conference Hall</span></div>
-          <div class="gallery-slide"><img src="images/restaurant-hall.jpg" alt="Restaurant"><span class="gallery-caption">Restaurant</span></div>
-          <div class="gallery-slide"><img src="images/game-zone.jpg" alt="Game Zone"><span class="gallery-caption">Game Zone</span></div>
-          <div class="gallery-slide"><img src="images/room-deluxe.jpg" alt="Rooms"><span class="gallery-caption">Rooms</span></div>
-          <div class="gallery-slide"><img src="images/gym.jpg" alt="Gym"><span class="gallery-caption">Gym</span></div>
-          <div class="gallery-slide"><img src="images/kalyanamandapam.jpg" alt="Kalyanamandapam"><span class="gallery-caption">Kalyanamandapam</span></div>
-        </div>
-      </div>
-
-      <button class="gallery-btn next gallery-next" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
-    </div>
-  </div>
-</section>
-
-<!-- PHOTO GALLERY SPOTLIGHT -->
-<section class="section-alt photo-spotlight-section">
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow" style="margin:0 auto 14px; padding-left:0;">Our Spaces</span>
-      <h2 style="font-size:clamp(2rem,3.6vw,2.8rem); margin-bottom:18px;">Explore Youth Club</h2>
-      <p>A glimpse into the beautiful facilities and spaces that make our club the pride of Bhimavaram.</p>
-    </div>
-
-    <div class="spotlight-slider-wrap reveal">
-      <div class="spotlight-track" id="spotlightTrack">
-
-        <div class="spotlight-card" data-index="0">
-          <div class="spotlight-img-wrap">
-            <img src="images/1.jpg" alt="View from top">
-            <div class="spotlight-overlay">
-              <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-            </div>
-          </div>
-          <div class="spotlight-label">View from top</div>
-        </div>
-
-        <div class="spotlight-card" data-index="1">
-          <div class="spotlight-img-wrap">
-            <img src="images/ycaimg4.jpg" alt="Sita rama raju statue">
-            <div class="spotlight-overlay">
-              <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-            </div>
-          </div>
-          <div class="spotlight-label">Sita Rama Raju Statue</div>
-        </div>
-
-        <div class="spotlight-card" data-index="2">
-          <div class="spotlight-img-wrap">
-            <img src="images/ycaimg2.jpg" alt="Reception">
-            <div class="spotlight-overlay">
-              <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-            </div>
-          </div>
-          <div class="spotlight-label">Reception</div>
-        </div>
-
-        <div class="spotlight-card" data-index="3">
-          <div class="spotlight-img-wrap">
-            <img src="images/ycaimg3.jpg" alt="Auditorium">
-            <div class="spotlight-overlay">
-              <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-            </div>
-          </div>
-          <div class="spotlight-label">Auditorium</div>
-        </div>
-
-        <div class="spotlight-card" data-index="4">
-          <div class="spotlight-img-wrap">
-            <img src="images/ycaimg11.jpg" alt="Gym">
-            <div class="spotlight-overlay">
-              <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-            </div>
-          </div>
-          <div class="spotlight-label">Gym</div>
-        </div>
-
-        <div class="spotlight-card" data-index="5">
-          <div class="spotlight-img-wrap">
-            <img src="images/ycaimg6.jpg" alt="Bar &amp; Restaurant">
-            <div class="spotlight-overlay">
-              <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-            </div>
-          </div>
-          <div class="spotlight-label">Bar &amp; Restaurant</div>
-        </div>
-
-        <div class="spotlight-card" data-index="6">
-          <div class="spotlight-img-wrap">
-            <img src="images/game-zone.jpg" alt="Indoor stadium">
-            <div class="spotlight-overlay">
-              <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-            </div>
-          </div>
-          <div class="spotlight-label">Indoor Stadium</div>
-        </div>
-
-        <div class="spotlight-card" data-index="7">
-          <div class="spotlight-img-wrap">
-            <img src="images/ycaimg12.jpg" alt="Conference hall">
-            <div class="spotlight-overlay">
-              <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-            </div>
-          </div>
-          <div class="spotlight-label">Conference Hall</div>
-        </div>
-
-      </div>
-
-      <div class="spotlight-controls">
-        <button class="spotlight-btn spotlight-prev" id="spotlightPrev" aria-label="Previous">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <span class="spotlight-counter"><span id="spotlightCurrent">1</span> / <span id="spotlightTotal">8</span></span>
-        <button class="spotlight-btn spotlight-next" id="spotlightNext" aria-label="Next">
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div class="spotlight-lightbox" id="spotlightLightbox">
-    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-    <div class="lightbox-content">
-      <button class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></button>
-      <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fa-solid fa-chevron-left"></i></button>
-      <div class="lightbox-img-wrap">
-        <img src="" alt="" id="lightboxImg">
-        <div class="lightbox-label" id="lightboxLabel"></div>
-      </div>
-      <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fa-solid fa-chevron-right"></i></button>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <a href="index.html" class="footer-logo">
-          <img src="images/logo.png" alt="Youth Cultural Association Logo">
-        </a>
-        <p>Tammi Raju Nagar, Bhimavaram, Andhra Pradesh 534204</p>
-        <div class="dot-socials">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Menu</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About us</a></li>
-          <li><a href="rooms.html">Rooms</a></li>
-          <li><a href="restaurant.html">Restaurant</a></li>
-          <li><a href="contact.html">Contact info</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Meet Youth Club</h4>
-        <ul>
-          <li><a href="#">Terms and conditions</a></li>
-          <li><a href="#">Privacy policy</a></li>
-          <li><a href="#">Help center</a></li>
-          <li><a href="#">Work with us</a></li>
-          <li><a href="#">Instagram</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Map</h4>
-        <div class="footer-map">
-          <iframe src="https://maps.google.com/maps?q=Youth+Cultural+Club+Bhimavaram+Andhra+Pradesh&output=embed&z=15" loading="lazy" title="Youth Cultural Club Location"></iframe>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Youth Cultural Association. All Rights Reserved.</span>
-      <span>Bhimavaram, Andhra Pradesh, India</span>
-    </div>
-  </div>
-</footer>
-
-<button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
-
-<script src="js/script.js"></script>
-<script>
-  (function() {
-    const overlay = document.getElementById('loadingOverlay');
-    if (overlay) {
+  <script>
+    (function () {
       const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
       const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
-      if (isReload || !isInternal) {
-        setTimeout(() => {
-          overlay.style.opacity = '0';
-          overlay.addEventListener('transitionend', () => overlay.remove());
-        }, 1500);
-      } else {
-        overlay.remove();
+      if (!isReload && isInternal) {
+        document.getElementById('loadingOverlay').style.display = 'none';
       }
-    }
-  })();
-</script>
+    })();
+  </script>
+
+
+
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <a href="tel:+919133311326" class="topbar-item">
+          <span class="topbar-icon-badge"><i class="fa-solid fa-phone"></i></span>
+          <strong>9133311326</strong>
+        </a>
+        <span class="topbar-sep">|</span>
+        <a href="https://maps.google.com/?q=Tammi+Raju+Nagar+Bhimavaram" class="topbar-item" target="_blank"
+          rel="noopener">
+          <span class="topbar-icon-badge"><i class="fa-solid fa-location-dot"></i></span>
+          <span>Tammi Raju Nagar, Bhimavaram</span>
+        </a>
+        <span class="topbar-sep">|</span>
+        <span class="topbar-item">
+          <span class="topbar-icon-badge"><i class="fa-solid fa-door-open"></i></span>
+          <span>Rooms: <strong style="color:#2ecc71;">Available</strong></span>
+        </span>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-open">
+          <span class="topbar-dot"></span>
+          <span>Open now &nbsp;&bull;&nbsp; 8am &ndash; 11pm</span>
+        </div>
+        <a href="https://www.facebook.com/" class="topbar-social-btn" aria-label="Facebook" target="_blank"
+          rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/" class="topbar-social-btn" aria-label="Instagram" target="_blank"
+          rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/+917207080232" class="topbar-social-btn" aria-label="WhatsApp" target="_blank"
+          rel="noopener"><i class="fa-regular fa-comment"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="mainNav">
+    <div class="container">
+      <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;">
+        <img src="images/logo.png" alt="Youth Cultural Association Bhimavaram">
+        <span style="display:flex;flex-direction:column;line-height:0.95;">
+          <strong
+            style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Youth
+            Cultural</strong>
+          <strong
+            style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Association</strong>
+        </span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li class="dropdown"><a href="about.html">Club <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+            <div class="dropdown-menu">
+              <a href="about.html">
+                <span class="dropdown-icon"><i class="fa-solid fa-users-gear"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Club Committee</span></span>
+              </a>
+              <a href="about.html">
+                <span class="dropdown-icon"><i class="fa-solid fa-building-columns"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Club Secretariat</span></span>
+              </a>
+            </div>
+          </li>
+          <li class="dropdown"><a href="#sports">Sports <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+            <div class="dropdown-menu dropdown-grid">
+              <a href="#sports">
+                <span class="dropdown-icon"><i class="fa-solid fa-baseball"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Tennis</span></span>
+                <span class="dropdown-badge">Courts</span>
+              </a>
+              <a href="#sports">
+                <span class="dropdown-icon"><i class="fa-solid fa-dumbbell"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Gym</span></span>
+                <span class="dropdown-badge">Fitness</span>
+              </a>
+              <a href="#sports">
+                <span class="dropdown-icon"><i class="fa-solid fa-feather"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Shuttle</span></span>
+              </a>
+              <a href="#sports">
+                <span class="dropdown-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Table Tennis</span></span>
+              </a>
+              <a href="#sports">
+                <span class="dropdown-icon"><i class="fa-solid fa-circle-dot"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Billiards</span></span>
+              </a>
+              <a href="#sports">
+                <span class="dropdown-icon"><i class="fa-solid fa-volleyball"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Volley Ball</span></span>
+              </a>
+            </div>
+          </li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="#">Membership</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="dropdown"><a href="#">Pages <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+            <div class="dropdown-menu">
+              <a href="#">
+                <span class="dropdown-icon"><i class="fa-solid fa-images"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Gallery</span></span>
+              </a>
+              <a href="#">
+                <span class="dropdown-icon"><i class="fa-solid fa-calendar-check"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Events</span></span>
+              </a>
+              <a href="#">
+                <span class="dropdown-icon"><i class="fa-solid fa-handshake"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Affiliations</span></span>
+              </a>
+              <a href="contact.html">
+                <span class="dropdown-icon"><i class="fa-solid fa-envelope"></i></span>
+                <span class="dropdown-text"><span class="dropdown-title">Contact</span></span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <a href="https://wa.me/+917207080232" class="btn btn-primary nav-book" target="_blank" rel="noopener"><i
+          class="fa-solid fa-comment"></i> Contact</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-slide active">
+      <img src="images/hero1.jpg" alt="Youth Cultural Association Bhimavaram — Club building and tennis courts">
+      <div class="hero-content">
+        <span class="eyebrow">Welcome to Youth Club</span>
+        <h1>Youth Cultural Association Bhimavaram</h1>
+        <p>A premier recreational club in Bhimavaram, fostering sports, culture, and community for generations of valued
+          members.</p>
+        <a href="rooms.html" class="btn btn-primary">Explore Rooms</a>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <img src="images/hero2.jpg" alt="Gokaraju Ramaiah & Rajeswamma Bhavan — Youth Club Rooms">
+      <div class="hero-content">
+        <span class="eyebrow">Sports & Recreation</span>
+        <h1>World-Class Sports Facilities for Members</h1>
+        <p>Tennis courts, gymnasium, billiards, table tennis, shuttle, and volleyball — everything your active lifestyle
+          demands.</p>
+        <a href="#sports" class="btn btn-primary">View Facilities</a>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <img src="images/hero3.jpg" alt="Alluri Srirama Raju Indoor Stadium and Tennis Courts — Youth Club Bhimavaram">
+      <div class="hero-content">
+        <span class="eyebrow">Membership</span>
+        <h1>Join Our Distinguished Club Community</h1>
+        <p>Be part of Bhimavaram's most vibrant cultural and recreational institution. Exclusive facilities, events, and
+          a warm community await.</p>
+        <a href="about.html" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+
+    <div class="hero-arrows">
+      <button class="hero-arrow prev" aria-label="Previous slide"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="hero-arrow next" aria-label="Next slide"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="hero-dots">
+      <span class="hero-dot active"></span><span class="hero-dot"></span><span class="hero-dot"></span>
+    </div>
+    <div class="scroll-indicator"><span>Scroll down</span><span class="stick"></span></div>
+  </section>
+
+  <!-- AMENITIES / FACILITIES -->
+  <section class="amenities" id="sports">
+    <div class="container">
+      <div class="amenities-grid">
+        <div class="amenity-card reveal">
+          <div class="amenity-icon"><i class="fa-solid fa-gamepad"></i></div>
+          <h4>Game Zone</h4>
+        </div>
+        <div class="amenity-card reveal reveal-delay-1">
+          <div class="amenity-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h4>All facility</h4>
+        </div>
+        <div class="amenity-card reveal reveal-delay-2">
+          <div class="amenity-icon"><i class="fa-solid fa-snowflake"></i></div>
+          <h4>Air-conditioned</h4>
+        </div>
+        <div class="amenity-card reveal reveal-delay-3">
+          <div class="amenity-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h4>Security</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images reveal">
+          <img class="img-main" src="images/ycaimg10.jpg"
+            alt="Gokaraju Ranga Raju & Ramayamma Bhavan — Youth Club Entrance">
+        </div>
+        <div class="about-text reveal reveal-delay-1">
+          <span class="eyebrow">About Youth Club</span>
+          <h2 style="font-size:clamp(1.9rem,3.4vw,2.6rem); margin-bottom:22px;">Bhimavaram's Premier Sports & Cultural
+            Club</h2>
+          <p style="margin-bottom:30px; font-size:16px;">The Youth Cultural Association of Bhimavaram is a premier
+            recreational institution dedicated to promoting sports, culture, and community development. With
+            state-of-the-art facilities spanning tennis courts, gymnasium, table tennis, billiards, volleyball, and
+            shuttle, we provide an unparalleled experience for our valued members.</p>
+          <a href="about.html" class="btn btn-primary">More about us</a>
+        </div>
+      </div>
+
+      <div class="about-sub">
+        <div class="about-text reveal">
+          <span class="eyebrow">Sports & Recreation</span>
+          <h2 style="font-size:clamp(1.9rem,3.4vw,2.6rem); margin-bottom:22px;">World-Class Facilities for Every Member
+          </h2>
+          <p style="margin-bottom:30px; font-size:16px;">From competitive tennis tournaments to relaxed billiards
+            sessions, our facilities cater to every interest and skill level. Join hundreds of active members who call
+            Youth Club their second home and preferred recreational destination in Bhimavaram.</p>
+          <a href="rooms.html" class="btn btn-primary">Book a Room</a>
+        </div>
+        <div class="about-images reveal reveal-delay-1" style="margin-bottom:0;">
+          <img class="img-main" src="images/ycaimg2.jpg" alt="Reception & Lobby — Youth Club Bhimavaram">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-icon-box">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+          <div class="stat-num" data-count="1">0</div>
+          <div class="stat-label">Bar &amp; Restaurant</div>
+        </div>
+
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-icon-box">
+            <i class="fa-solid fa-hotel"></i>
+          </div>
+          <div class="stat-num" data-count="50" data-suffix="+">0</div>
+          <div class="stat-label">Rooms</div>
+        </div>
+
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-icon-box">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <div class="stat-num" data-count="3">0</div>
+          <div class="stat-label">Rummy Halls</div>
+        </div>
+
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-icon-box">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="stat-num" data-count="1000" data-suffix="+">0</div>
+          <div class="stat-label">Members</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST ROOMS -->
+  <section class="section-alt" id="rooms">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow" style="margin:0 auto 14px; padding-left:0;">Our Rooms</span>
+        <h2 style="font-size:clamp(2rem,3.6vw,2.8rem); margin-bottom:18px;">Comfortable Guest Rooms</h2>
+        <p>Our well-appointed rooms offer a comfortable stay for members and their guests, equipped with modern
+          amenities and serene surroundings in the heart of Bhimavaram.</p>
+      </div>
+
+      <div class="rooms-grid">
+        <div class="room-card reveal">
+          <div class="room-media"><span class="room-tag">Deluxe</span><img src="images/room-deluxe.jpg"
+              alt="Deluxe Room"></div>
+          <div class="room-body">
+            <h3>Deluxe Room</h3>
+            <p>Spacious and elegantly furnished room with modern amenities for a premium stay experience.</p>
+          </div>
+        </div>
+
+        <div class="room-card reveal reveal-delay-1">
+          <div class="room-media"><span class="room-tag">Standard</span><img src="images/room-standard.jpg"
+              alt="Standard Room"></div>
+          <div class="room-body">
+            <h3>Standard Room</h3>
+            <p>Comfortable and well-appointed room with all essential amenities for a pleasant stay.</p>
+          </div>
+        </div>
+
+        <div class="room-card reveal reveal-delay-2">
+          <div class="room-media"><span class="room-tag">Suite</span><img src="images/room-suite.jpg" alt="Suite Room">
+          </div>
+          <div class="room-body">
+            <h3>Suite Room</h3>
+            <p>Luxurious suite room with private lounge seating, elegant furnishings, and premium amenities.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-cta reveal">
+        <a href="rooms.html" class="btn btn-primary">All rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AROUND THE CLUB -->
+  <!-- AROUND THE CLUB -->
+  <section>
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow" style="margin:0 auto 14px; padding-left:0;">Explore</span>
+        <h2 style="font-size:clamp(2rem,3.6vw,2.8rem); margin-bottom:16px;">Around The Club</h2>
+        <p>Discover our world-class facilities, vibrant grounds, and the warm community that makes Youth Club truly
+          special.</p>
+      </div>
+
+      <div class="gallery-wrapper reveal">
+        <button class="gallery-btn prev gallery-prev" aria-label="Previous slide"><i
+            class="fa-solid fa-chevron-left"></i></button>
+
+        <div class="gallery-track-wrap">
+          <div class="gallery-track">
+            <div class="gallery-slide"><img src="images/lounge-bar.jpg" alt="Lounge Bar"><span
+                class="gallery-caption">Lounge Bar</span></div>
+            <div class="gallery-slide"><img src="images/conference-hall.jpg" alt="Conference Hall"><span
+                class="gallery-caption">Conference Hall</span></div>
+            <div class="gallery-slide"><img src="images/restaurant-hall.jpg" alt="Restaurant"><span
+                class="gallery-caption">Restaurant</span></div>
+            <div class="gallery-slide"><img src="images/game-zone.jpg" alt="Game Zone"><span
+                class="gallery-caption">Game Zone</span></div>
+            <div class="gallery-slide"><img src="images/room-deluxe.jpg" alt="Rooms"><span
+                class="gallery-caption">Rooms</span></div>
+            <div class="gallery-slide"><img src="images/gym.jpg" alt="Gym"><span class="gallery-caption">Gym</span>
+            </div>
+            <div class="gallery-slide"><img src="images/kalyanamandapam.jpg" alt="Kalyanamandapam"><span
+                class="gallery-caption">Kalyanamandapam</span></div>
+          </div>
+        </div>
+
+        <button class="gallery-btn next gallery-next" aria-label="Next slide"><i
+            class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PHOTO GALLERY SPOTLIGHT -->
+  <section class="section-alt photo-spotlight-section">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow" style="margin:0 auto 14px; padding-left:0;">Our Spaces</span>
+        <h2 style="font-size:clamp(2rem,3.6vw,2.8rem); margin-bottom:18px;">Explore Youth Club</h2>
+        <p>A glimpse into the beautiful facilities and spaces that make our club the pride of Bhimavaram.</p>
+      </div>
+
+      <div class="spotlight-slider-wrap reveal">
+        <div class="spotlight-track" id="spotlightTrack">
+
+          <div class="spotlight-card" data-index="0">
+            <div class="spotlight-img-wrap">
+              <img src="images/1.jpg" alt="View from top">
+              <div class="spotlight-overlay">
+                <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+            </div>
+            <div class="spotlight-label">View from top</div>
+          </div>
+
+          <div class="spotlight-card" data-index="1">
+            <div class="spotlight-img-wrap">
+              <img src="images/ycaimg4.jpg" alt="Sita rama raju statue">
+              <div class="spotlight-overlay">
+                <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+            </div>
+            <div class="spotlight-label">Sita Rama Raju Statue</div>
+          </div>
+
+          <div class="spotlight-card" data-index="2">
+            <div class="spotlight-img-wrap">
+              <img src="images/ycaimg2.jpg" alt="Reception">
+              <div class="spotlight-overlay">
+                <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+            </div>
+            <div class="spotlight-label">Reception</div>
+          </div>
+
+          <div class="spotlight-card" data-index="3">
+            <div class="spotlight-img-wrap">
+              <img src="images/ycaimg3.jpg" alt="Auditorium">
+              <div class="spotlight-overlay">
+                <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+            </div>
+            <div class="spotlight-label">Auditorium</div>
+          </div>
+
+          <div class="spotlight-card" data-index="4">
+            <div class="spotlight-img-wrap">
+              <img src="images/ycaimg11.jpg" alt="Gym">
+              <div class="spotlight-overlay">
+                <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+            </div>
+            <div class="spotlight-label">Gym</div>
+          </div>
+
+          <div class="spotlight-card" data-index="5">
+            <div class="spotlight-img-wrap">
+              <img src="images/ycaimg6.jpg" alt="Bar &amp; Restaurant">
+              <div class="spotlight-overlay">
+                <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+            </div>
+            <div class="spotlight-label">Bar &amp; Restaurant</div>
+          </div>
+
+          <div class="spotlight-card" data-index="6">
+            <div class="spotlight-img-wrap">
+              <img src="images/game-zone.jpg" alt="Indoor stadium">
+              <div class="spotlight-overlay">
+                <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+            </div>
+            <div class="spotlight-label">Indoor Stadium</div>
+          </div>
+
+          <div class="spotlight-card" data-index="7">
+            <div class="spotlight-img-wrap">
+              <img src="images/ycaimg12.jpg" alt="Conference hall">
+              <div class="spotlight-overlay">
+                <div class="spotlight-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+            </div>
+            <div class="spotlight-label">Conference Hall</div>
+          </div>
+
+        </div>
+
+        <div class="spotlight-controls">
+          <button class="spotlight-btn spotlight-prev" id="spotlightPrev" aria-label="Previous">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <span class="spotlight-counter"><span id="spotlightCurrent">1</span> / <span
+              id="spotlightTotal">8</span></span>
+          <button class="spotlight-btn spotlight-next" id="spotlightNext" aria-label="Next">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="spotlight-lightbox" id="spotlightLightbox">
+      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+      <div class="lightbox-content">
+        <button class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="lightbox-img-wrap">
+          <img src="" alt="" id="lightboxImg">
+          <div class="lightbox-label" id="lightboxLabel"></div>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="footer-logo">
+            <img src="images/logo.png" alt="Youth Cultural Association Logo">
+          </a>
+          <p>Tammi Raju Nagar, Bhimavaram, Andhra Pradesh 534204</p>
+          <div class="dot-socials">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Menu</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="restaurant.html">Restaurant</a></li>
+            <li><a href="contact.html">Contact info</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Meet Youth Club</h4>
+          <ul>
+            <li><a href="#">Terms and conditions</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Help center</a></li>
+            <li><a href="#">Work with us</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Map</h4>
+          <div class="footer-map">
+            <iframe src="https://maps.google.com/maps?q=Youth+Cultural+Club+Bhimavaram+Andhra+Pradesh&output=embed&z=15"
+              loading="lazy" title="Youth Cultural Club Location"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Youth Cultural Association. All Rights Reserved.</span>
+        <span>Bhimavaram, Andhra Pradesh, India</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="js/script.js"></script>
+  <script>
+    (function () {
+      const overlay = document.getElementById('loadingOverlay');
+      if (overlay) {
+        const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+        const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+        if (isReload || !isInternal) {
+          setTimeout(() => {
+            overlay.style.opacity = '0';
+            overlay.addEventListener('transitionend', () => overlay.remove());
+          }, 1500);
+        } else {
+          overlay.remove();
+        }
+      }
+    })();
+  </script>
 </body>
+
 </html>
