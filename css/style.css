@@ -1004,7 +1004,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 }
 
 /* ---------- Sections generic ---------- */
-section{ padding:120px 0; }
+section{ padding:70px 0; }
 .section-alt{ background:var(--section-bg); }
 .section-head{ max-width:640px; margin-bottom:56px; }
 .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
@@ -1444,7 +1444,7 @@ footer{
 
 @media(max-width:767px){
   .container{ padding:0 18px; }
-  section{ padding:55px 0; }
+  section{ padding:40px 0; }
   .section-head{ margin-bottom:34px; }
   .section-head h2{ font-size:clamp(1.65rem, 5.8vw, 2.2rem) !important; }
   .section-head p{ font-size:14.5px; }
