@@ -844,24 +844,44 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 @keyframes heroUp{ to{ opacity:1; transform:translateY(0); } }
 
 .hero-arrows{
-  position:absolute; z-index:6;
-  bottom:40px; right:40px;
-  display:flex; gap:10px;
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
+  pointer-events: none;
 }
 .hero-arrow{
-  width:46px; height:46px;
-  border-radius:50%;
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.4);
-  color:#fff;
-  display:flex; align-items:center; justify-content:center;
-  cursor:pointer;
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
-  transition:all .3s ease;
-  font-size:16px;
+  pointer-events: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all .25s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 17px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
-.hero-arrow:hover{ background:var(--primary); border-color:var(--primary); }
+.hero-arrow:hover{
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: scale(1.08);
+  box-shadow: 0 10px 28px rgba(50, 52, 146, 0.4);
+}
+.hero-arrow:active{
+  transform: scale(0.95);
+}
 
 .hero-dots{
   position:absolute; z-index:6;
@@ -903,12 +923,11 @@ a:focus-visible, button:focus-visible, input:focus-visible{
     margin-bottom:22px;
   }
   .hero-arrows{
-    bottom:20px; right:16px;
-    gap:8px;
+    padding: 0 12px;
   }
   .hero-arrow{
-    width:38px; height:38px;
-    font-size:13px;
+    width:40px; height:40px;
+    font-size:14px;
   }
   .hero-dots{
     bottom:28px; left:20px; right:auto;
