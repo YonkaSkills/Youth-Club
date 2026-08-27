@@ -419,14 +419,15 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 }
 .dropdown-menu{
   position: absolute;
-  top: calc(100% + 12px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(8px) scale(0.97);
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   min-width: 230px;
-  padding: 8px;
+  /* visual gap via padding-top so hover area is unbroken */
+  padding: 12px 8px 8px;
   border-radius: 18px;
   border: 1px solid rgba(50, 52, 146, 0.1);
   box-shadow: 0 24px 50px -12px rgba(24, 13, 61, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.9) inset, 0 4px 16px rgba(50, 52, 146, 0.06);
@@ -435,6 +436,16 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   pointer-events: none;
   transition: opacity .22s cubic-bezier(0.16, 1, 0.3, 1), transform .22s cubic-bezier(0.16, 1, 0.3, 1), visibility .22s;
   z-index: 1050;
+}
+/* Transparent bridge fills the gap between nav link and dropdown */
+.dropdown-menu::after{
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: transparent;
 }
 /* Upward Arrow pointer for the box */
 .dropdown-menu::before{
