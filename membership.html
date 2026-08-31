@@ -267,115 +267,6 @@
       color: var(--primary-hover);
     }
 
-    /* Privileges / Benefits Grid */
-    .privileges-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
-    }
-    .privilege-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px 24px;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .privilege-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 35px rgba(20, 30, 70, 0.08);
-      border-color: rgba(50, 52, 146, 0.2);
-    }
-    .privilege-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: rgba(50, 52, 146, 0.08);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-    .privilege-card h4 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--heading);
-      margin-bottom: 8px;
-    }
-    .privilege-card p {
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: var(--body);
-    }
-
-    /* Process steps */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
-      position: relative;
-    }
-    .process-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 32px 24px;
-      position: relative;
-    }
-    .process-num {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 800;
-      color: rgba(50, 52, 146, 0.15);
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-    .process-card h4 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--heading);
-      margin-bottom: 10px;
-    }
-    .process-card p {
-      font-size: 13.5px;
-      line-height: 1.65;
-      color: var(--body);
-    }
-
-    /* Helpdesk Box */
-    .membership-cta-box {
-      background: linear-gradient(135deg, #172554 0%, #1e1b4b 100%);
-      border-radius: 24px;
-      padding: 50px 48px;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
-    }
-    .membership-cta-content h3 {
-      color: #ffffff;
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .membership-cta-content p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 15px;
-      max-width: 540px;
-      line-height: 1.65;
-    }
-    .membership-cta-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-
     /* Responsive */
     @media(max-width: 991px) {
       .membership-stats-strip {
@@ -384,17 +275,6 @@
       }
       .membership-grid {
         grid-template-columns: 1fr;
-      }
-      .privileges-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .process-grid {
-        grid-template-columns: 1fr;
-      }
-      .membership-cta-box {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 36px 28px;
       }
     }
     @media(max-width: 640px) {
@@ -410,9 +290,6 @@
       }
       .membership-card {
         padding: 24px 20px;
-      }
-      .privileges-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -709,104 +586,6 @@
         </div>
 
       </div>
-    </div>
-  </section>
-
-  <!-- MEMBER PRIVILEGES SECTION -->
-  <section class="section-alt" id="privileges">
-    <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow"><i class="fa-solid fa-shield-halved"></i> Member Privileges</span>
-        <h2>What Members Enjoy</h2>
-        <p>Youth Cultural Association offers state-of-the-art sports arenas, family dining, and premier hospitality in Bhimavaram.</p>
-      </div>
-
-      <div class="privileges-grid">
-        <div class="privilege-card">
-          <div class="privilege-icon"><i class="fa-solid fa-baseball"></i></div>
-          <h4>Tennis & Sports Courts</h4>
-          <p>Clay and synthetic tennis courts, indoor shuttle badminton courts, and volleyball grounds with professional lighting.</p>
-        </div>
-
-        <div class="privilege-card">
-          <div class="privilege-icon"><i class="fa-solid fa-dumbbell"></i></div>
-          <h4>Fitness Center & Gym</h4>
-          <p>Fully equipped gymnasium with cardio, weight training, and fitness coaching facilities for members of all ages.</p>
-        </div>
-
-        <div class="privilege-card">
-          <div class="privilege-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></div>
-          <h4>Indoor Games & Billiards</h4>
-          <p>Championship-grade billiard tables, table tennis arenas, card rooms, and air-conditioned rummy lounges.</p>
-        </div>
-
-        <div class="privilege-card">
-          <div class="privilege-icon"><i class="fa-solid fa-utensils"></i></div>
-          <h4>Multi-Cuisine Restaurant</h4>
-          <p>Exclusive dining for members and family with authentic South Indian, North Indian, and specialty cuisines.</p>
-        </div>
-
-        <div class="privilege-card">
-          <div class="privilege-icon"><i class="fa-solid fa-bed"></i></div>
-          <h4>Deluxe Guest Rooms</h4>
-          <p>Over 50 well-appointed, air-conditioned guest rooms at subsidized tariff for member stays and their guests.</p>
-        </div>
-
-        <div class="privilege-card">
-          <div class="privilege-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-          <h4>Banquet & Cultural Events</h4>
-          <p>Spacious conference halls, open-air lawns, festival celebrations, and private function booking privileges.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- APPLICATION PROCESS -->
-  <section id="how-to-apply">
-    <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow"><i class="fa-solid fa-clipboard-list"></i> Enrollment Process</span>
-        <h2>How to Become a Member</h2>
-        <p>Simple 3-step admission procedure administered transparently by the Club Secretariat.</p>
-      </div>
-
-      <div class="process-grid">
-        <div class="process-card">
-          <div class="process-num">01</div>
-          <h4>Obtain Application</h4>
-          <p>Collect the prescribed Membership Application Form from the Club Secretariat office during working hours (8:00 AM – 11:00 PM).</p>
-        </div>
-
-        <div class="process-card">
-          <div class="process-num">02</div>
-          <h4>Submit with Proposer</h4>
-          <p>Complete the form with requisite identification documents, endorsed by active members as proposer and seconder per club rules.</p>
-        </div>
-
-        <div class="process-card">
-          <div class="process-num">03</div>
-          <h4>Executive Review & Induction</h4>
-          <p>Applications are reviewed by the Executive Body. Upon approval and requisite fee remittance, the membership card is issued.</p>
-        </div>
-      </div>
-
-      <!-- CTA HELPDESK BOX -->
-      <div class="membership-cta-box" style="margin-top:50px;">
-        <div class="membership-cta-content">
-          <span style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-light);font-weight:700;display:block;margin-bottom:8px;"><i class="fa-solid fa-circle-info"></i> Secretariat Assistance</span>
-          <h3>Have Questions Regarding Membership?</h3>
-          <p>Our administrative desk is available daily to assist prospective applicants with eligibility details, fee structures, and category guidelines.</p>
-        </div>
-        <div class="membership-cta-actions">
-          <a href="tel:+919133311326" class="btn btn-primary" style="background:var(--gold);color:#172554;font-weight:700;border:none;">
-            <i class="fa-solid fa-phone"></i> Call 9133311326
-          </a>
-          <a href="https://wa.me/+917207080232" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">
-            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-          </a>
-        </div>
-      </div>
-
     </div>
   </section>
 
