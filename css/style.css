@@ -1318,17 +1318,29 @@ section{ padding:70px 0; }
 .breadcrumb span{ color:var(--muted); }
 
 /* ---------- Restaurant menu ---------- */
-.menu-grid{
-  display:grid; grid-template-columns:1fr 1fr; gap:40px 60px;
+.menu-slider{
+  display:block;
 }
-.menu-item{ display:flex; flex-direction:column; gap:20px; padding-bottom:40px; border-bottom:1px dashed var(--border); align-items:flex-start; }
-.menu-item img{ width:180px; height:180px; border-radius:var(--radius-small); object-fit:cover; flex-shrink:0; }
-.menu-item-body{ flex:1; display:flex; flex-direction:column; }
-.menu-item-top{ display:flex; justify-content:space-between; gap:10px; }
-.menu-item-top h4{ font-family:var(--font-heading); font-size:28px; color:var(--heading); font-weight:700; line-height:1.3; }
+.menu-nav{
+  display:none;
+}
+.menu-viewport{
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+}
+.menu-track{
+  display:flex;
+  flex-wrap:nowrap;
+  gap:40px;
+}
+.menu-item{ flex:0 0 300px; display:flex; flex-direction:column; gap:24px; padding-bottom:40px; border-bottom:1px dashed var(--border); align-items:flex-start; }
+.menu-item img{ width:min(100%, 300px); height:auto; aspect-ratio:1/1; border-radius:var(--radius-small); object-fit:cover; flex-shrink:0; }
+.menu-item-body{ flex:1; display:flex; flex-direction:column; width:100%; }
+.menu-item-top{ display:flex; justify-content:space-between; gap:10px; width:100%; }
+.menu-item-top h4{ font-family:var(--font-heading); font-size:clamp(2rem, 3.5vw, 2.625rem); color:var(--heading); font-weight:700; line-height:1.25; }
 .menu-item-top .price{ color:var(--primary); font-weight:600; white-space:nowrap; }
 .menu-item p{ font-size:14px; margin-top:16px; color:var(--body); }
-@media(max-width:767px){ .menu-grid{ grid-template-columns:1fr; } }
 
 /* ---------- Contact ---------- */
 .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; }
@@ -1512,10 +1524,10 @@ footer{
   /* Inner pages */
   .page-header{ padding:80px 0 35px; }
   .page-header h1{ font-size:clamp(1.75rem, 5.5vw, 2.2rem); margin-bottom:10px; }
-  .menu-grid{ grid-template-columns:1fr; gap:20px; }
-  .menu-item{ gap:12px; padding-bottom:24px; }
-  .menu-item img{ width:90px; height:90px; }
-  .menu-item-top h4{ font-size:18px; }
+  .menu-track{ gap:24px; }
+  .menu-item{ flex:0 0 min(280px, 85vw); gap:16px; padding-bottom:24px; }
+  .menu-item img{ width:min(100%, 180px); height:auto; aspect-ratio:1/1; }
+  .menu-item-top h4{ font-size:clamp(1.5rem, 5.5vw, 1.75rem); }
   .menu-item p{ font-size:13px; }
 
   .form-grid{ grid-template-columns:1fr; gap:14px; }

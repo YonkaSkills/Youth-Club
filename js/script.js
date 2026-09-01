@@ -199,6 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
   }
 
+  /* ---------- Restaurant menu slider (native scrollbar) ---------- */
+  /* Menu now uses native browser scrollbar - no custom arrow navigation needed */
+
   /* ---------- Filter tabs (Rooms / Restaurant) ---------- */
   document.querySelectorAll('.filter-tabs').forEach(tabWrap => {
     const targetSel = tabWrap.dataset.target;
