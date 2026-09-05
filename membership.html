@@ -4,655 +4,303 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Membership — Youth Cultural Association Bhimavaram</title>
-  <meta name="description" content="Explore membership categories, privileges, and enrollment at Youth Cultural Association Bhimavaram — Donor, Life, Honorary, and Temporary memberships.">
+  <meta name="description" content="Explore membership categories, eligibility, and by-law provisions at Youth Cultural Association Bhimavaram — Donor, Life, Honorary, and Temporary memberships.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* ── MEMBERSHIP PAGE SPECIFIC STYLES ── */
-
-    .membership-hero {
-      position: relative;
-      background: linear-gradient(135deg, #0d1240 0%, #1b2363 55%, #2d3590 100%);
-      padding: 130px 0 65px;
-      color: #fff;
-      text-align: center;
-      overflow: hidden;
-    }
-    .membership-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 20%, rgba(232, 177, 15, 0.12) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .membership-hero .breadcrumb {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 16px;
-    }
-    .membership-hero .breadcrumb a {
-      color: rgba(255, 255, 255, 0.7);
-      transition: color .2s;
-    }
-    .membership-hero .breadcrumb a:hover {
-      color: #fff;
-    }
-    .membership-hero .breadcrumb span {
-      color: var(--gold-light);
-      font-weight: 600;
-    }
-    .membership-hero h1 {
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 14px;
-      letter-spacing: -0.5px;
-    }
-    .membership-hero p {
-      font-size: clamp(15px, 1.8vw, 17px);
-      color: rgba(255, 255, 255, 0.82);
-      max-width: 680px;
-      margin: 0 auto;
-      line-height: 1.65;
-    }
-
-    /* Quick stats strip */
-    .membership-stats-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: -36px;
-      position: relative;
-      z-index: 10;
-    }
-    .m-stat-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-medium);
-      padding: 22px 18px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(20, 30, 70, 0.08);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .m-stat-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 36px rgba(20, 30, 70, 0.12);
-    }
-    .m-stat-card strong {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: var(--primary);
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-    .m-stat-card span {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    /* Category Cards Grid */
-    .membership-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      margin-top: 40px;
-    }
-    .membership-card {
-      background: #ffffff;
-      border-radius: 20px;
-      border: 1px solid #E2E8F0;
-      box-shadow: 0 8px 30px rgba(24, 13, 61, 0.06);
-      padding: 36px 32px 30px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .3s ease, border-color .3s ease;
-      overflow: hidden;
-    }
-    .membership-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-light));
-      opacity: 0;
-      transition: opacity .3s ease;
-    }
-    .membership-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(24, 13, 61, 0.12);
-      border-color: rgba(50, 52, 146, 0.3);
-    }
-    .membership-card:hover::before {
-      opacity: 1;
-    }
-    .membership-card.featured::before {
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    }
-    .membership-card-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-    .membership-badge-pill {
-      font-family: var(--font-heading);
-      font-size: 11.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      padding: 5px 12px;
-      border-radius: var(--radius-pill);
-      background: rgba(50, 52, 146, 0.08);
-      color: var(--primary);
-      border: 1px solid rgba(50, 52, 146, 0.15);
-    }
-    .membership-badge-pill.gold {
-      background: rgba(232, 177, 15, 0.12);
-      color: #996e00;
-      border-color: rgba(232, 177, 15, 0.3);
-    }
-    .membership-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 16px;
-      background: rgba(50, 52, 146, 0.08);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
-      transition: transform .3s ease, background .3s ease, color .3s ease;
-    }
-    .membership-card:hover .membership-icon {
-      background: var(--primary);
-      color: #ffffff;
-      transform: scale(1.08) rotate(3deg);
-    }
-    .membership-card.featured:hover .membership-icon {
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      color: #172554;
-    }
-    .membership-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--heading);
-      margin-bottom: 6px;
-      letter-spacing: -0.2px;
-    }
-    .membership-tagline {
-      font-size: 13.5px;
-      color: var(--muted);
-      font-weight: 500;
-      margin-bottom: 18px;
-    }
-    .membership-rule-box {
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      border-radius: 14px;
-      padding: 18px 20px;
-      margin-bottom: 22px;
-      position: relative;
-    }
-    .membership-rule-box p {
-      font-size: 14.5px;
-      line-height: 1.7;
-      color: #334155;
-      font-weight: 450;
-    }
-    .membership-rule-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-    .membership-perks-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .membership-perks-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13.5px;
-      color: var(--body);
-    }
-    .membership-perks-list li i {
-      color: #10B981;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-    .membership-card-footer {
-      padding-top: 18px;
-      border-top: 1px solid #F1F5F9;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .membership-card-footer a {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--primary);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap .2s ease;
-    }
-    .membership-card-footer a:hover {
-      gap: 10px;
-      color: var(--primary-hover);
-    }
-
-    /* Responsive */
-    @media(max-width: 991px) {
-      .membership-stats-strip {
-        grid-template-columns: repeat(2, 1fr);
-        margin-top: 20px;
-      }
-      .membership-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    @media(max-width: 640px) {
-      .membership-stats-strip {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-      .m-stat-card {
-        padding: 16px 12px;
-      }
-      .m-stat-card strong {
-        font-size: 1.5rem;
-      }
-      .membership-card {
-        padding: 24px 20px;
-      }
-    }
-  </style>
 </head>
 <body>
+<div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.4s ease;">
+  <video src="videos/Logo Loading.webm" autoplay muted loop playsinline style="max-width:150px;height:auto;"></video>
+  <video src="videos/Loading Bar.mp4" autoplay muted loop playsinline style="max-width:150px;height:auto;margin-top:12px;"></video>
+</div>
+<script>
+  (function() {
+    const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+    const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+    if (!isReload && isInternal) {
+      document.getElementById('loadingOverlay').style.display = 'none';
+    }
+  })();
+</script>
 
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="topbar-left">
-        <a href="tel:+919133311326" class="topbar-item">
-          <span class="topbar-icon-badge"><i class="fa-solid fa-phone"></i></span>
-          <strong>9133311326</strong>
-        </a>
-        <span class="topbar-sep">|</span>
-        <a href="https://maps.google.com/?q=Tammi+Raju+Nagar+Bhimavaram" class="topbar-item" target="_blank"
-          rel="noopener">
-          <span class="topbar-icon-badge"><i class="fa-solid fa-location-dot"></i></span>
-          <span>Tammi Raju Nagar, Bhimavaram</span>
-        </a>
-        <span class="topbar-sep">|</span>
-        <span class="topbar-item">
-          <span class="topbar-icon-badge"><i class="fa-solid fa-door-open"></i></span>
-          <span>Rooms: <strong style="color:#2ecc71;">Available</strong></span>
-        </span>
-      </div>
-      <div class="topbar-right">
-        <div class="topbar-open">
-          <span class="topbar-dot"></span>
-          <span>Open now &nbsp;&bull;&nbsp; 8am &ndash; 11pm</span>
-        </div>
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="tel:+919133311326" class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-phone"></i></span>
+        <strong>9133311326</strong>
+      </a>
+      <span class="topbar-sep">|</span>
+      <a href="https://maps.google.com/?q=Tammi+Raju+Nagar+Bhimavaram" class="topbar-item" target="_blank" rel="noopener">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-location-dot"></i></span>
+        <span>Tammi Raju Nagar, Bhimavaram</span>
+      </a>
+      <span class="topbar-sep">|</span>
+      <span class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-door-open"></i></span>
+        <span>Rooms: <strong style="color:#2ecc71;">Available</strong></span>
+      </span>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-open">
+        <span class="topbar-dot"></span>
+        <span>Open now &nbsp;&bull;&nbsp; 8am &ndash; 11pm</span>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- NAVBAR -->
-  <header class="navbar" id="mainNav">
-    <div class="container">
-      <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;">
-        <img src="images/logo.png" alt="Youth Cultural Association Bhimavaram">
-        <span style="display:flex;flex-direction:column;line-height:0.95;">
-          <strong
-            style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Youth
-            Cultural</strong>
-          <strong
-            style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Association</strong>
-        </span>
-      </a>
-      <nav>
-        <ul class="nav-links">
+<!-- NAVBAR -->
+<header class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;">
+      <img src="images/logo.png" alt="Youth Cultural Association Bhimavaram">
+      <span style="display:flex;flex-direction:column;line-height:0.95;">
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Youth Cultural</strong>
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Association</strong>
+      </span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown"><a href="about.html">Club <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="about.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-users-gear"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Club Committee</span></span>
+            </a>
+            <a href="about.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-building-columns"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Club Secretariat</span></span>
+            </a>
+          </div>
+        </li>
+        <li class="dropdown"><a href="index.html#sports">Sports <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu dropdown-grid">
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-baseball"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Tennis</span></span>
+              <span class="dropdown-badge">Courts</span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-dumbbell"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Gym</span></span>
+              <span class="dropdown-badge">Fitness</span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-feather"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Shuttle</span></span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Table Tennis</span></span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-circle-dot"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Billiards</span></span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-volleyball"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Volley Ball</span></span>
+            </a>
+          </div>
+        </li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="restaurant.html">Restaurant</a></li>
+        <li class="active"><a href="membership.html">Membership</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown"><a href="#">Pages <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="#">
+              <span class="dropdown-icon"><i class="fa-solid fa-images"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Gallery</span></span>
+            </a>
+            <a href="#">
+              <span class="dropdown-icon"><i class="fa-solid fa-calendar-check"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Events</span></span>
+            </a>
+            <a href="#">
+              <span class="dropdown-icon"><i class="fa-solid fa-handshake"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Affiliations</span></span>
+            </a>
+            <a href="contact.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-envelope"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Contact</span></span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://wa.me/+917207080232" class="btn btn-primary nav-book" target="_blank" rel="noopener"><i class="fa-solid fa-comment"></i> Contact</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <h1>Club Membership</h1>
+    <p style="max-width:600px; margin:0 auto 26px;">Explore membership categories and by-law provisions governing the Youth Cultural Association Bhimavaram.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span style="color:var(--blue); font-weight:600;">Membership</span></div>
+  </div>
+</div>
+
+<!-- MEMBERSHIP CATEGORIES SECTION -->
+<section class="membership-section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Club Charter</span>
+      <h2>Membership Categories</h2>
+      <p>Youth Cultural Association offers structured categories of membership governed by the Memorandum of Association and By-Laws.</p>
+    </div>
+
+    <div class="membership-grid">
+
+      <!-- 1. DONOR MEMBER -->
+      <div class="membership-card">
+        <div class="membership-card-top">
+          <span class="membership-num">01</span>
+          <span class="membership-tag">Founder</span>
+        </div>
+        <h3>Donor Member</h3>
+        <p class="membership-subtitle">Founder Members & Signatories</p>
+        <div class="membership-provision">
+          <span class="provision-label">By-Law Provision</span>
+          <p class="provision-text">"All those members who have signed on the Memorandum of Association shall be the founder members of the Club."</p>
+        </div>
+      </div>
+
+      <!-- 2. LIFE MEMBER -->
+      <div class="membership-card">
+        <div class="membership-card-top">
+          <span class="membership-num">02</span>
+          <span class="membership-tag">Permanent</span>
+        </div>
+        <h3>Life Member</h3>
+        <p class="membership-subtitle">Permanent Individual Membership</p>
+        <div class="membership-provision">
+          <span class="provision-label">By-Law Provision</span>
+          <p class="provision-text">"The membership in this category remains during the lifetime of the member."</p>
+        </div>
+      </div>
+
+      <!-- 3. HONORARY MEMBERSHIP -->
+      <div class="membership-card">
+        <div class="membership-card-top">
+          <span class="membership-num">03</span>
+          <span class="membership-tag">Distinction</span>
+        </div>
+        <h3>Honorary Membership</h3>
+        <p class="membership-subtitle">Chief Patrons & Dignitaries</p>
+        <div class="membership-provision">
+          <span class="provision-label">By-Law Provision</span>
+          <p class="provision-text">"The Executive Body may induct any person as Chief Patron. However he will remain as honorary member of the club. His membership is restricted only to those with distinction and whose services are considered necessary to promote the interest of the club."</p>
+        </div>
+      </div>
+
+      <!-- 4. TEMPORARY MEMBERSHIP -->
+      <div class="membership-card">
+        <div class="membership-card-top">
+          <span class="membership-num">04</span>
+          <span class="membership-tag">Short-Term</span>
+        </div>
+        <h3>Temporary Membership</h3>
+        <p class="membership-subtitle">Seasonal & Visiting Enrolment</p>
+        <div class="membership-provision">
+          <span class="provision-label">By-Law Provision</span>
+          <p class="provision-text">"Any person may be enrolled as temporary member of the Club for a period not exceeding 3 months in any year."</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECRETARIAT NOTICE -->
+    <div class="membership-notice">
+      <div class="membership-notice-content">
+        <div class="notice-icon"><i class="fa-solid fa-building-columns"></i></div>
+        <div>
+          <h4>Club Secretariat Inquiries</h4>
+          <p>For membership procedures, verification, or by-law clarifications, please contact the Club Secretariat.</p>
+        </div>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Contact Secretariat</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">
+          <img src="images/logo.png" alt="Youth Cultural Association Logo">
+        </a>
+        <p>Tammi Raju Nagar, Bhimavaram, Andhra Pradesh 534204</p>
+        <div class="dot-socials">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
           <li><a href="index.html">Home</a></li>
-          <li class="dropdown"><a href="about.html">Club <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
-            <div class="dropdown-menu">
-              <a href="about.html">
-                <span class="dropdown-icon"><i class="fa-solid fa-users-gear"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Club Committee</span></span>
-              </a>
-              <a href="about.html">
-                <span class="dropdown-icon"><i class="fa-solid fa-building-columns"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Club Secretariat</span></span>
-              </a>
-            </div>
-          </li>
-          <li class="dropdown"><a href="index.html#sports">Sports <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
-            <div class="dropdown-menu dropdown-grid">
-              <a href="index.html#sports">
-                <span class="dropdown-icon"><i class="fa-solid fa-baseball"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Tennis</span></span>
-                <span class="dropdown-badge">Courts</span>
-              </a>
-              <a href="index.html#sports">
-                <span class="dropdown-icon"><i class="fa-solid fa-dumbbell"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Gym</span></span>
-                <span class="dropdown-badge">Fitness</span>
-              </a>
-              <a href="index.html#sports">
-                <span class="dropdown-icon"><i class="fa-solid fa-feather"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Shuttle</span></span>
-              </a>
-              <a href="index.html#sports">
-                <span class="dropdown-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Table Tennis</span></span>
-              </a>
-              <a href="index.html#sports">
-                <span class="dropdown-icon"><i class="fa-solid fa-circle-dot"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Billiards</span></span>
-              </a>
-              <a href="index.html#sports">
-                <span class="dropdown-icon"><i class="fa-solid fa-volleyball"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Volley Ball</span></span>
-              </a>
-            </div>
-          </li>
+          <li><a href="about.html">About us</a></li>
           <li><a href="rooms.html">Rooms</a></li>
           <li><a href="restaurant.html">Restaurant</a></li>
-          <li class="active"><a href="membership.html">Membership</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="dropdown"><a href="#">Pages <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
-            <div class="dropdown-menu">
-              <a href="#">
-                <span class="dropdown-icon"><i class="fa-solid fa-images"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Gallery</span></span>
-              </a>
-              <a href="#">
-                <span class="dropdown-icon"><i class="fa-solid fa-calendar-check"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Events</span></span>
-              </a>
-              <a href="#">
-                <span class="dropdown-icon"><i class="fa-solid fa-handshake"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Affiliations</span></span>
-              </a>
-              <a href="contact.html">
-                <span class="dropdown-icon"><i class="fa-solid fa-envelope"></i></span>
-                <span class="dropdown-text"><span class="dropdown-title">Contact</span></span>
-              </a>
-            </div>
-          </li>
+          <li><a href="contact.html">Contact info</a></li>
         </ul>
-      </nav>
-      <div class="nav-actions">
-        <a href="https://wa.me/+917207080232" class="btn btn-primary nav-book" target="_blank" rel="noopener"><i
-            class="fa-solid fa-comment"></i> Contact</a>
-        <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+      <div class="footer-col">
+        <h4>Meet Youth Club</h4>
+        <ul>
+          <li><a href="#">Terms and conditions</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Work with us</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Map</h4>
+        <div class="footer-map">
+          <iframe src="https://maps.google.com/maps?q=Youth+Cultural+Club+Bhimavaram+Andhra+Pradesh&output=embed&z=15" loading="lazy" title="Youth Cultural Club Location"></iframe>
+        </div>
       </div>
     </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="membership-hero">
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <i class="fa-solid fa-chevron-right" style="font-size:10px;opacity:0.6;"></i>
-        <span>Membership</span>
-      </div>
-      <h1>Membership Categories</h1>
-      <p>Join Youth Cultural Association Bhimavaram — a prestigious community of over 1,000 members enjoying premier sports, fine dining, deluxe rooms, and vibrant fellowship.</p>
-    </div>
-  </section>
-
-  <!-- QUICK STATS STRIP -->
-  <div class="container">
-    <div class="membership-stats-strip">
-      <div class="m-stat-card">
-        <strong>1990</strong>
-        <span>Established Year</span>
-      </div>
-      <div class="m-stat-card">
-        <strong>1,000+</strong>
-        <span>Active Members</span>
-      </div>
-      <div class="m-stat-card">
-        <strong>4</strong>
-        <span>Membership Categories</span>
-      </div>
-      <div class="m-stat-card">
-        <strong>100%</strong>
-        <span>Recreation & Sports Access</span>
-      </div>
+    <div class="footer-bottom">
+      <span>© 2026 Youth Cultural Association. All Rights Reserved.</span>
+      <span>Bhimavaram, Andhra Pradesh, India</span>
     </div>
   </div>
+</footer>
 
-  <!-- MEMBERSHIP CATEGORIES SECTION -->
-  <section id="categories" style="padding-top:60px;">
-    <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow"><i class="fa-solid fa-id-card"></i> Club By-Laws</span>
-        <h2>Explore Membership Tiers</h2>
-        <p>Our club offers structured membership categories defined by the Memorandum of Association and Executive Body regulations.</p>
-      </div>
+<button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-      <div class="membership-grid">
-
-        <!-- 1. DONOR MEMBER -->
-        <div class="membership-card featured">
-          <div>
-            <div class="membership-card-head">
-              <span class="membership-badge-pill gold"><i class="fa-solid fa-star"></i> Founder Category</span>
-              <div class="membership-icon"><i class="fa-solid fa-award"></i></div>
-            </div>
-            <h3 class="membership-title">Donor Member</h3>
-            <p class="membership-tagline">Founder Members & Signatories</p>
-
-            <div class="membership-rule-box">
-              <div class="membership-rule-label"><i class="fa-solid fa-scale-balanced"></i> Club By-Law Provision</div>
-              <p>All those members who have signed on the Memorandum of Association shall be the founder members of the Club.</p>
-            </div>
-
-            <ul class="membership-perks-list">
-              <li><i class="fa-solid fa-circle-check"></i> Permanent founder status and club recognition</li>
-              <li><i class="fa-solid fa-circle-check"></i> Voting rights in the General Body meetings</li>
-              <li><i class="fa-solid fa-circle-check"></i> Complete access to all club facilities & sports amenities</li>
-              <li><i class="fa-solid fa-circle-check"></i> Privileged guest room and dining reservations</li>
-            </ul>
-          </div>
-
-          <div class="membership-card-footer">
-            <span style="font-size:12.5px;color:var(--muted);">Category: <strong>Founder Tier</strong></span>
-            <a href="contact.html">Inquire with Secretariat <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- 2. LIFE MEMBER -->
-        <div class="membership-card">
-          <div>
-            <div class="membership-card-head">
-              <span class="membership-badge-pill"><i class="fa-solid fa-infinity"></i> Lifetime Privileges</span>
-              <div class="membership-icon"><i class="fa-solid fa-gem"></i></div>
-            </div>
-            <h3 class="membership-title">Life Member</h3>
-            <p class="membership-tagline">Permanent Individual Membership</p>
-
-            <div class="membership-rule-box">
-              <div class="membership-rule-label"><i class="fa-solid fa-scale-balanced"></i> Club By-Law Provision</div>
-              <p>The membership in this category remains during the lifetime of the member.</p>
-            </div>
-
-            <ul class="membership-perks-list">
-              <li><i class="fa-solid fa-circle-check"></i> Lifelong, uninterrupted access to all sports and amenities</li>
-              <li><i class="fa-solid fa-circle-check"></i> Family privileges for spouse and dependent children</li>
-              <li><i class="fa-solid fa-circle-check"></i> Member rates on banquet, dining, and deluxe guest rooms</li>
-              <li><i class="fa-solid fa-circle-check"></i> Eligibility to participate in club tournaments and cultural programs</li>
-            </ul>
-          </div>
-
-          <div class="membership-card-footer">
-            <span style="font-size:12.5px;color:var(--muted);">Category: <strong>Lifetime Tier</strong></span>
-            <a href="contact.html">Inquire with Secretariat <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- 3. HONORARY MEMBERSHIP -->
-        <div class="membership-card">
-          <div>
-            <div class="membership-card-head">
-              <span class="membership-badge-pill gold"><i class="fa-solid fa-crown"></i> Executive Induction</span>
-              <div class="membership-icon"><i class="fa-solid fa-crown"></i></div>
-            </div>
-            <h3 class="membership-title">Honorary Membership</h3>
-            <p class="membership-tagline">Chief Patrons & Distinguished Personalities</p>
-
-            <div class="membership-rule-box">
-              <div class="membership-rule-label"><i class="fa-solid fa-scale-balanced"></i> Club By-Law Provision</div>
-              <p>The Executive Body may induct any person as Chief Patron. However he will remain as honorary member of the club. His membership is restricted only to those with distinction and whose services are considered necessary to promote the interest of the club.</p>
-            </div>
-
-            <ul class="membership-perks-list">
-              <li><i class="fa-solid fa-circle-check"></i> Conferred by resolution of the Executive Body</li>
-              <li><i class="fa-solid fa-circle-check"></i> Chief Patron status & guest of honor at club events</li>
-              <li><i class="fa-solid fa-circle-check"></i> Full VIP privileges across all association facilities</li>
-              <li><i class="fa-solid fa-circle-check"></i> Advisory involvement in promoting club interests</li>
-            </ul>
-          </div>
-
-          <div class="membership-card-footer">
-            <span style="font-size:12.5px;color:var(--muted);">Category: <strong>Distinction Tier</strong></span>
-            <a href="contact.html">Inquire with Secretariat <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- 4. TEMPORARY MEMBERSHIP -->
-        <div class="membership-card">
-          <div>
-            <div class="membership-card-head">
-              <span class="membership-badge-pill"><i class="fa-solid fa-calendar-days"></i> Short-Term Pass</span>
-              <div class="membership-icon"><i class="fa-solid fa-clock"></i></div>
-            </div>
-            <h3 class="membership-title">Temporary Membership</h3>
-            <p class="membership-tagline">Seasonal & Short-Term Enrolment</p>
-
-            <div class="membership-rule-box">
-              <div class="membership-rule-label"><i class="fa-solid fa-scale-balanced"></i> Club By-Law Provision</div>
-              <p>Any person may be enrolled as temporary member of the Club for a period not exceeding 3 months in any year.</p>
-            </div>
-
-            <ul class="membership-perks-list">
-              <li><i class="fa-solid fa-circle-check"></i> Flexible access valid for up to 3 months per year</li>
-              <li><i class="fa-solid fa-circle-check"></i> Ideal for visiting professionals, NRI guests & temporary residents</li>
-              <li><i class="fa-solid fa-circle-check"></i> Access to sports facilities, gymnasium & restaurant dining</li>
-              <li><i class="fa-solid fa-circle-check"></i> Easy application and quick approval process</li>
-            </ul>
-          </div>
-
-          <div class="membership-card-footer">
-            <span style="font-size:12.5px;color:var(--muted);">Validity: <strong>Max 3 Months / Year</strong></span>
-            <a href="contact.html">Apply for Pass <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-logo">
-            <img src="images/logo.png" alt="Youth Cultural Association Bhimavaram">
-            <span>Youth Cultural Association</span>
-          </div>
-          <p>Bhimavaram's premier sports and recreation club since 1990. Offering tennis, badminton, gym, rooms, restaurant, and vibrant community fellowship.</p>
-          <div class="footer-socials">
-            <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://wa.me/+917207080232" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Club</a></li>
-            <li><a href="membership.html">Membership</a></li>
-            <li><a href="rooms.html">Guest Rooms</a></li>
-            <li><a href="restaurant.html">Restaurant</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Facilities & Sports</h4>
-          <ul>
-            <li><a href="index.html#sports">Tennis Courts</a></li>
-            <li><a href="index.html#sports">Shuttle Badminton</a></li>
-            <li><a href="index.html#sports">Fitness Gym</a></li>
-            <li><a href="index.html#sports">Billiards & Snooker</a></li>
-            <li><a href="index.html#sports">Table Tennis</a></li>
-            <li><a href="index.html#sports">Rummy & Card Rooms</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Club Secretariat</h4>
-          <div class="footer-contact-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>Tammi Raju Nagar, Bhimavaram, West Godavari Dist., Andhra Pradesh</span>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <span>+91 91333 11326</span>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fa-solid fa-envelope"></i>
-            <span>info@youthculturalassociation.org</span>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fa-solid fa-clock"></i>
-            <span>Open All Days: 8:00 AM – 11:00 PM</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Youth Cultural Association Bhimavaram. All rights reserved.</p>
-        <p>Regd. No. Under Societies Act &bull; Estd. 1990</p>
-      </div>
-    </div>
-  </footer>
-
-  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
-
-  <script src="js/script.js"></script>
+<script src="js/script.js"></script>
+<script>
+  (function() {
+    const overlay = document.getElementById('loadingOverlay');
+    if (overlay) {
+      const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+      const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+      if (isReload || !isInternal) {
+        setTimeout(() => {
+          overlay.style.opacity = '0';
+          overlay.addEventListener('transitionend', () => overlay.remove());
+        }, 1500);
+      } else {
+        overlay.remove();
+      }
+    }
+  })();
+</script>
 </body>
 </html>
