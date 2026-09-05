@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Close nav on non-dropdown link click
-  document.querySelectorAll('.nav-links a:not(.dropdown > a)').forEach(a => {
+  // Close nav on non-dropdown link and dropdown child item clicks
+  document.querySelectorAll('.nav-links a:not(.dropdown > a), .dropdown-menu a').forEach(a => {
     a.addEventListener('click', () => {
       if (window.innerWidth <= 991) closeNav();
     });

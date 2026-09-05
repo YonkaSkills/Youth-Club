@@ -445,14 +445,16 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   border-left: 1px solid rgba(50, 52, 146, 0.1);
   border-radius: 2px 0 0 0;
 }
-/* Hover / Open state */
-.dropdown:hover .dropdown-menu,
-.dropdown.open .dropdown-menu,
-.dropdown.is-open > .dropdown-menu{
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0) scale(1);
+/* Desktop Hover / Open state */
+@media (min-width: 992px) {
+  .dropdown:hover .dropdown-menu,
+  .dropdown.open .dropdown-menu,
+  .dropdown.is-open > .dropdown-menu{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
 }
 
 /* Dropdown Grid (for Sports / Multi-column boxes) */
@@ -707,16 +709,18 @@ a:focus-visible, button:focus-visible, input:focus-visible{
     visibility: visible;
     transform: none !important;
     box-shadow: none;
-    border: none;
-    background: rgba(50, 52, 146, 0.03);
-    border-radius: 12px;
+    border: 1px solid rgba(50, 52, 146, 0.08);
+    background: #F8FAFC;
+    border-radius: 14px;
     display: none;
-    padding: 6px;
-    margin: 4px 0 6px 0;
+    padding: 8px 6px;
+    margin: 6px 0 8px 0;
     min-width: unset;
   }
-  .dropdown-menu::before{
-    display: none;
+  .dropdown-menu::before,
+  .dropdown-menu::after{
+    display: none !important;
+    content: none !important;
   }
   .dropdown-menu.dropdown-grid{
     grid-template-columns: 1fr;
@@ -725,15 +729,18 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   .dropdown.open .dropdown-menu{
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
   }
   .dropdown-menu a{
-    padding: 8px 10px;
-    font-size: 13.5px;
-    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    color: var(--heading);
   }
-  .dropdown-menu a:hover{
+  .dropdown-menu a:hover,
+  .dropdown-menu a:active{
     background: rgba(50, 52, 146, 0.08);
+    color: var(--primary);
   }
   .nav-toggle{
     display: flex;
@@ -786,17 +793,10 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 /* ---------- Hero Slider ---------- */
 .hero{
   position:relative;
-  display:flex;
-  flex-direction:column;
-  background:var(--heading);
-}
-
-.hero-carousel{
-  position:relative;
   height:92vh;
   min-height:620px;
   overflow:hidden;
-  flex-shrink:0;
+  background:var(--heading);
 }
 
 .hero-slide{
@@ -902,26 +902,16 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .hero-dot.active{ background:#fff; width:26px; border-radius:6px; }
 
 .scroll-indicator{
-  position:relative;
-  z-index:10;
-  padding:24px;
-  color:#fff; 
-  font-size:11px; 
-  letter-spacing:2px; 
-  text-transform:uppercase;
-  display:flex; 
-  flex-direction:column; 
-  align-items:center; 
-  gap:14px;
-  opacity:.85;
-  transition: opacity .3s ease;
-  white-space:nowrap;
-  background:linear-gradient(180deg, rgba(23,37,84,.5) 0%, rgba(23,37,84,.72) 100%);
-  flex-shrink:0;
+  position:absolute; z-index:6; bottom:16px; left:50%; transform:translateX(-50%);
+  color:#fff; font-size:11px; letter-spacing:2px; text-transform:uppercase;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  opacity:.75;
 }
+.scroll-indicator .stick{ display:none; }
+.scroll-indicator .stick::after{ display:none; }
 
 @media(max-width:767px){
-  .hero-carousel{
+  .hero{
     height:calc(100vh - 100px);
     min-height:480px;
     max-height:640px;
