@@ -150,48 +150,82 @@
   </div>
 </div>
 
-<section>
+<section class="restaurant-menu-section">
   <div class="container">
-    <h2 style="font-size:clamp(2rem,3.6vw,2.8rem); text-align:center; margin-bottom:18px;">Our luxurious menu</h2>
-    <p style="max-width:640px; margin:0 auto 32px; text-align:center; font-size:16px; color:var(--body);">We Offer Many Special Food Items For You Eat And Enjoy In Youth Club</p>
-    
-    <div class="filter-tabs" data-target="#menuListing">
-      <button class="filter-tab active" data-filter="all">Menu</button>
+    <div class="section-head center">
+      <span class="eyebrow" style="margin:0 auto 12px; padding-left:0;">Culinary Specialties</span>
+      <h2 style="font-size:clamp(2rem,3.6vw,2.8rem); text-align:center; margin-bottom:14px;">Our Luxurious Menu</h2>
+      <p style="max-width:640px; margin:0 auto 30px; text-align:center; font-size:16px; color:var(--body);">We offer special culinary creations freshly prepared for members and guests to savor and enjoy.</p>
     </div>
 
-    <div class="menu-slider">
-      <div class="menu-viewport">
+    <div class="menu-slider-wrap">
+      <button class="menu-slider-btn prev" id="menuSliderPrev" aria-label="Previous dishes" type="button">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <div class="menu-viewport" id="menuViewport">
         <div class="menu-track" id="menuListing">
-      <div class="menu-item" data-category="all">
-        <img src="images/Mutton Biryani.jpg" alt="Mutton Potlam Biryani">
-        <div class="menu-item-body">
-          <div class="menu-item-top"><h4>Mutton Potlam Biryani</h4></div>
-          <p>Fragrant basmati rice cooked with tender mutton, aromatic spices, and traditional flavors.</p>
+          <div class="menu-item" data-category="all">
+            <div class="menu-item-media">
+              <span class="menu-item-badge">Specialty</span>
+              <img src="images/Mutton Biryani.jpg" alt="Mutton Potlam Biryani">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-top">
+                <h4>Mutton Potlam Biryani</h4>
+              </div>
+              <p>Fragrant basmati rice cooked with tender mutton, aromatic spices, and traditional flavors.</p>
+            </div>
+          </div>
+
+          <div class="menu-item" data-category="all">
+            <div class="menu-item-media">
+              <span class="menu-item-badge">Popular</span>
+              <img src="images/Chicken Lollipop.jpg" alt="Chicken Lollipop">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-top">
+                <h4>Chicken Lollipop</h4>
+              </div>
+              <p>Tender chicken drumettes fried to golden perfection with a crispy, flavorful coating.</p>
+            </div>
+          </div>
+
+          <div class="menu-item" data-category="all">
+            <div class="menu-item-media">
+              <span class="menu-item-badge">Chef's Choice</span>
+              <img src="images/Chilli Chicken.jpg" alt="Chilli Chicken">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-top">
+                <h4>Chilli Chicken</h4>
+              </div>
+              <p>Spiced chicken tossed in a savory and slightly spicy sauce with fresh vegetables and peppers.</p>
+            </div>
+          </div>
+
+          <div class="menu-item" data-category="all">
+            <div class="menu-item-media">
+              <span class="menu-item-badge">Signature</span>
+              <img src="images/Stuffed Crabs.jpg" alt="Stuffed Crabs">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-top">
+                <h4>Stuffed Crabs (4 Pieces)</h4>
+              </div>
+              <p>Fresh crab shells filled with succulent crab meat, spices, and breadcrumbs, baked to perfection.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="menu-item" data-category="all">
-        <img src="images/Chicken Lollipop.jpg" alt="Chicken Lollipop">
-        <div class="menu-item-body">
-          <div class="menu-item-top"><h4>Chicken Lollipop</h4></div>
-          <p>Tender chicken drumettes fried to golden perfection with a crispy, flavorful coating.</p>
-        </div>
-      </div>
-      <div class="menu-item" data-category="all">
-        <img src="images/Chilli Chicken.jpg" alt="Chilli Chicken">
-        <div class="menu-item-body">
-          <div class="menu-item-top"><h4>Chilli Chicken</h4></div>
-          <p>Spiced chicken tossed in a savory and slightly spicy sauce with fresh vegetables and peppers.</p>
-        </div>
-      </div>
-      <div class="menu-item" data-category="all">
-        <img src="images/Stuffed Crabs.jpg" alt="Stuffed Crabs">
-        <div class="menu-item-body">
-          <div class="menu-item-top"><h4>Stuffed Crabs (4 Pieces)</h4></div>
-          <p>Fresh crab shells filled with succulent crab meat, spices, and breadcrumbs, baked to perfection.</p>
-        </div>
-      </div>
-        </div>
-      </div>
+
+      <button class="menu-slider-btn next" id="menuSliderNext" aria-label="Next dishes" type="button">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div class="menu-slider-controls">
+      <div class="menu-slider-dots" id="menuSliderDots"></div>
     </div>
   </div>
 </section>

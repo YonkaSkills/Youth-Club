@@ -199,8 +199,112 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
   }
 
-  /* ---------- Restaurant menu slider (native scrollbar) ---------- */
-  /* Menu now uses native browser scrollbar - no custom arrow navigation needed */
+  /* ---------- Restaurant menu slider ---------- */
+  const menuViewport = document.getElementById('menuViewport');
+  const menuPrevBtn = document.getElementById('menuSliderPrev');
+  const menuNextBtn = document.getElementById('menuSliderNext');
+  const menuDotsWrap = document.getElementById('menuSliderDots');
+
+  if (menuViewport && (menuPrevBtn || menuNextBtn)) {
+    const items = menuViewport.querySelectorAll('.menu-item');
+    const totalItems = items.length;
+
+    // Generate pagination dots
+    if (menuDotsWrap && totalItems > 0) {
+      menuDotsWrap.innerHTML = '';
+      for (let i = 0; i < totalItems; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'menu-slider-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to dish ${i + 1}`);
+        dot.addEventListener('click', () => {
+          if (items[i]) {
+            items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          }
+        });
+        menuDotsWrap.appendChild(dot);
+      }
+    }
+
+    const getScrollStep = () => {
+      const firstItem = menuViewport.querySelector('.menu-item');
+      if (!firstItem) return 340;
+      const track = menuViewport.querySelector('.menu-track');
+      const gap = track ? (parseFloat(window.getComputedStyle(track).gap) || 28) : 28;
+      return firstItem.offsetWidth + gap;
+    };
+
+    const updateSliderControls = () => {
+      const maxScroll = Math.max(0, menuViewport.scrollWidth - menuViewport.clientWidth);
+      const currentScroll = menuViewport.scrollLeft;
+
+      if (menuPrevBtn) {
+        const atStart = currentScroll <= 8;
+        menuPrevBtn.disabled = atStart;
+        menuPrevBtn.classList.toggle('disabled', atStart);
+      }
+      if (menuNextBtn) {
+        const atEnd = currentScroll >= maxScroll - 8;
+        menuNextBtn.disabled = atEnd;
+        menuNextBtn.classList.toggle('disabled', atEnd);
+      }
+
+      if (menuDotsWrap) {
+        const step = getScrollStep();
+        const activeIdx = Math.min(totalItems - 1, Math.max(0, Math.round(currentScroll / step)));
+        const dots = menuDotsWrap.querySelectorAll('.menu-slider-dot');
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === activeIdx);
+        });
+      }
+    };
+
+    menuPrevBtn?.addEventListener('click', () => {
+      menuViewport.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+    });
+
+    menuNextBtn?.addEventListener('click', () => {
+      menuViewport.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+    });
+
+    menuViewport.addEventListener('scroll', updateSliderControls, { passive: true });
+    window.addEventListener('resize', updateSliderControls);
+
+    // Run initial update
+    setTimeout(updateSliderControls, 100);
+
+    // Mouse drag scrolling for desktop
+    let isMouseDown = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let hasDragged = false;
+
+    menuViewport.addEventListener('mousedown', (e) => {
+      // Don't drag if clicked on button or interactive elements
+      if (e.target.closest('button, a')) return;
+      isMouseDown = true;
+      hasDragged = false;
+      startX = e.pageX - menuViewport.offsetLeft;
+      startScrollLeft = menuViewport.scrollLeft;
+      menuViewport.style.scrollBehavior = 'auto';
+      menuViewport.style.cursor = 'grabbing';
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isMouseDown) return;
+      isMouseDown = false;
+      menuViewport.style.cursor = '';
+      menuViewport.style.scrollBehavior = 'smooth';
+    });
+
+    menuViewport.addEventListener('mousemove', (e) => {
+      if (!isMouseDown) return;
+      e.preventDefault();
+      const x = e.pageX - menuViewport.offsetLeft;
+      const walk = (x - startX) * 1.25;
+      if (Math.abs(walk) > 4) hasDragged = true;
+      menuViewport.scrollLeft = startScrollLeft - walk;
+    });
+  }
 
   /* ---------- Filter tabs (Rooms / Restaurant) ---------- */
   document.querySelectorAll('.filter-tabs').forEach(tabWrap => {
