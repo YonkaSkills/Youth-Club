@@ -237,20 +237,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const maxScroll = Math.max(0, menuViewport.scrollWidth - menuViewport.clientWidth);
       const currentScroll = menuViewport.scrollLeft;
 
-      if (menuPrevBtn) {
-        const atStart = currentScroll <= 8;
-        menuPrevBtn.disabled = atStart;
-        menuPrevBtn.classList.toggle('disabled', atStart);
-      }
-      if (menuNextBtn) {
-        const atEnd = currentScroll >= maxScroll - 8;
-        menuNextBtn.disabled = atEnd;
-        menuNextBtn.classList.toggle('disabled', atEnd);
-      }
-
+      // Update dots indicator based on scroll position
       if (menuDotsWrap) {
         const step = getScrollStep();
-        const activeIdx = Math.min(totalItems - 1, Math.max(0, Math.round(currentScroll / step)));
+        let activeIdx = Math.min(totalItems - 1, Math.max(0, Math.round(currentScroll / step)));
+        if (maxScroll > 0 && currentScroll >= maxScroll - 15) {
+          activeIdx = totalItems - 1;
+        }
         const dots = menuDotsWrap.querySelectorAll('.menu-slider-dot');
         dots.forEach((dot, idx) => {
           dot.classList.toggle('active', idx === activeIdx);
@@ -259,11 +252,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     menuPrevBtn?.addEventListener('click', () => {
-      menuViewport.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+      const currentScroll = menuViewport.scrollLeft;
+      const maxScroll = Math.max(0, menuViewport.scrollWidth - menuViewport.clientWidth);
+      if (currentScroll <= 10) {
+        menuViewport.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      } else {
+        const step = getScrollStep();
+        menuViewport.scrollTo({ left: Math.max(0, currentScroll - step), behavior: 'smooth' });
+      }
     });
 
     menuNextBtn?.addEventListener('click', () => {
-      menuViewport.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+      const currentScroll = menuViewport.scrollLeft;
+      const maxScroll = Math.max(0, menuViewport.scrollWidth - menuViewport.clientWidth);
+      if (currentScroll >= maxScroll - 10) {
+        menuViewport.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        const step = getScrollStep();
+        menuViewport.scrollTo({ left: Math.min(maxScroll, currentScroll + step), behavior: 'smooth' });
+      }
     });
 
     menuViewport.addEventListener('scroll', updateSliderControls, { passive: true });
