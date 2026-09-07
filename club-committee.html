@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club Committee — Youth Cultural Association Bhimavaram</title>
+<meta name="description" content="Meet the dedicated Club Committee members shaping the vision and spirit of Youth Cultural Association Bhimavaram.">
+<meta name="keywords" content="Youth Club Committee, Youth Cultural Association, Bhimavaram, Club Management">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Youth Cultural Association Bhimavaram">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── CLUB COMMITTEE PAGE ── */
+.committee-hero{position:relative;min-height:420px;display:flex;align-items:flex-end;overflow:hidden;padding:0;}
+.committee-hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0d1240 0%,#1b2363 60%,#2d3590 100%);}
+.committee-hero-bg::after{content:'';position:absolute;inset:0;background:url('images/1.jpg') center/cover no-repeat;opacity:0.22;mix-blend-mode:luminosity;}
+.committee-hero-bg::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:32px 32px;z-index:1;}
+.committee-hero-content{position:relative;z-index:2;width:100%;padding:80px 0 56px;}
+.committee-hero-content .breadcrumb{margin-bottom:18px;}
+.committee-hero-content .breadcrumb a,.committee-hero-content .breadcrumb span{color:rgba(255,255,255,0.65);font-size:13px;}
+.committee-hero-content .breadcrumb span:last-child{color:#fff;font-weight:600;}
+.committee-hero-content h1{font-size:clamp(2.2rem,5vw,3.8rem);color:#fff;font-weight:800;line-height:1.12;margin-bottom:16px;max-width:640px;}
+.committee-hero-content p{color:rgba(255,255,255,0.78);font-size:17px;max-width:540px;line-height:1.7;}
+@media(max-width:640px){.committee-hero-content{padding:60px 0 40px;}}
+
+/* ── COMMITTEE MEMBERS SECTION ── */
+.committee-section{
+  padding: 80px 0 100px;
+  background: #f5f6fb;
+}
+.committee-section-head{
+  text-align: center;
+  margin-bottom: 56px;
+}
+.committee-section-head .eyebrow{
+  display: inline-block;
+  background: linear-gradient(90deg,#34378B,#6c72f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.committee-section-head h2{
+  font-size: clamp(1.75rem,3.5vw,2.5rem);
+  color: #0d1240;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.committee-section-head p{
+  color: #6b7280;
+  font-size: 16px;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* GROUP LABEL */
+.committee-group-label{
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #34378B;
+  text-align: center;
+  margin: 48px 0 24px;
+  position: relative;
+}
+.committee-group-label::before,
+.committee-group-label::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 80px);
+  height: 1px;
+  background: #e0e3f0;
+}
+.committee-group-label::before{ left: 0; }
+.committee-group-label::after{ right: 0; }
+.committee-group-label:first-of-type{ margin-top: 0; }
+
+/* GRID */
+.committee-grid{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 24px;
+}
+.committee-grid.cols-3{ grid-template-columns: repeat(3,1fr); max-width: 860px; margin: 0 auto; }
+.committee-grid.cols-2{ grid-template-columns: repeat(2,1fr); max-width: 580px; margin: 0 auto; }
+.committee-grid.cols-1{ grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+
+/* CARD */
+.cm-card{
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #e8eaf4;
+  box-shadow: 0 4px 20px rgba(52,55,139,0.06), 0 1px 3px rgba(0,0,0,0.03);
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(.34,1.56,.64,1), box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 14px 0 14px;
+}
+.cm-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(52,55,139,0.12), 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* PHOTO FRAME */
+.cm-photo-frame{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.8;
+  border-radius: 16px;
+  background: linear-gradient(160deg,#dde6f8 0%,#eef2fc 55%,#f5f8ff 100%);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7), 0 4px 14px rgba(52,55,139,0.08);
+}
+.cm-photo-frame::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 45%, rgba(255,255,255,0.92) 100%);
+  pointer-events: none;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+.cm-photo-frame img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.cm-card:hover .cm-photo-frame img{
+  transform: scale(1.04);
+}
+/* SVG placeholder style */
+.cm-photo-frame .cm-placeholder{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(160deg,#c8d8f0 0%,#dde9f9 55%,#eaf1fb 100%);
+}
+.cm-photo-frame .cm-placeholder svg{
+  width: 70%;
+  height: auto;
+  margin-bottom: 0;
+  opacity: 0.55;
+  filter: grayscale(0.1);
+}
+
+/* ACCENT BAR */
+.cm-accent{
+  height: 3px;
+  width: 40px;
+  background: linear-gradient(90deg,#34378B,#6c72f5);
+  border-radius: 2px;
+  margin: 14px 4px 0;
+  flex-shrink: 0;
+}
+
+/* CARD BODY */
+.cm-body{
+  padding: 10px 4px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cm-name{
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #0d1240;
+  line-height: 1.3;
+  margin: 0;
+}
+.cm-telugu{
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+.cm-role{
+  display: inline-block;
+  margin-top: 10px;
+  background: #eef0fb;
+  color: #34378B;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.01em;
+  align-self: flex-start;
+}
+
+@media(max-width:1100px){
+  .committee-grid{ grid-template-columns: repeat(3,1fr); }
+}
+@media(max-width:768px){
+  .committee-grid{ grid-template-columns: repeat(2,1fr); gap:16px; }
+  .committee-grid.cols-3{ grid-template-columns: repeat(2,1fr); max-width:unset; }
+  .committee-grid.cols-2{ grid-template-columns: repeat(2,1fr); max-width:unset; }
+  .committee-grid.cols-1{ grid-template-columns: repeat(2,1fr); max-width:unset; }
+  .committee-section{ padding:56px 0 72px; }
+}
+@media(max-width:480px){
+  .committee-grid{ grid-template-columns: repeat(2,1fr); gap:12px; }
+  .cm-name{ font-size:14px; }
+  .cm-telugu{ font-size:12px; }
+  .cm-role{ font-size:11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING OVERLAY -->
+<div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.4s ease;">
+  <video src="videos/Logo Loading.webm" autoplay muted loop playsinline style="max-width:150px;height:auto;"></video>
+  <video src="videos/Loading Bar.mp4" autoplay muted loop playsinline style="max-width:150px;height:auto;margin-top:12px;"></video>
+</div>
+<script>
+  (function() {
+    var isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0] && performance.getEntriesByType('navigation')[0].type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+    var isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+    if (!isReload && isInternal) { document.getElementById('loadingOverlay').style.display = 'none'; }
+  })();
+</script>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="tel:+919133311326" class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-phone"></i></span>
+        <strong>9133311326</strong>
+      </a>
+      <span class="topbar-sep">|</span>
+      <a href="https://maps.google.com/?q=Tammi+Raju+Nagar+Bhimavaram" class="topbar-item" target="_blank" rel="noopener">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-location-dot"></i></span>
+        <span>Tammi Raju Nagar, Bhimavaram</span>
+      </a>
+      <span class="topbar-sep">|</span>
+      <span class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-door-open"></i></span>
+        <span>Rooms: <strong style="color:#2ecc71;">Available</strong></span>
+      </span>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-open">
+        <span class="topbar-dot"></span>
+        <span>Open now &nbsp;&bull;&nbsp; 8am &ndash; 11pm</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;">
+      <img src="images/logo.png" alt="Youth Cultural Association Bhimavaram">
+      <span style="display:flex;flex-direction:column;line-height:0.95;">
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Youth Cultural</strong>
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Association</strong>
+      </span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown active"><a href="club-committee.html">Club <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="club-committee.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-users-gear"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Club Committee</span></span>
+            </a>
+            <a href="about.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-building-columns"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Club Secretariat</span></span>
+            </a>
+          </div>
+        </li>
+        <li class="dropdown"><a href="index.html#sports">Sports <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu dropdown-grid">
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-baseball"></i></span><span class="dropdown-text"><span class="dropdown-title">Tennis</span></span><span class="dropdown-badge">Courts</span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-dumbbell"></i></span><span class="dropdown-text"><span class="dropdown-title">Gym</span></span><span class="dropdown-badge">Fitness</span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-feather"></i></span><span class="dropdown-text"><span class="dropdown-title">Shuttle</span></span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></span><span class="dropdown-text"><span class="dropdown-title">Table Tennis</span></span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-circle-dot"></i></span><span class="dropdown-text"><span class="dropdown-title">Billiards</span></span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-volleyball"></i></span><span class="dropdown-text"><span class="dropdown-title">Volley Ball</span></span></a>
+          </div>
+        </li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="restaurant.html">Restaurant</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown"><a href="#">Pages <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><span class="dropdown-icon"><i class="fa-solid fa-images"></i></span><span class="dropdown-text"><span class="dropdown-title">Gallery</span></span></a>
+            <a href="#"><span class="dropdown-icon"><i class="fa-solid fa-calendar-check"></i></span><span class="dropdown-text"><span class="dropdown-title">Events</span></span></a>
+            <a href="#"><span class="dropdown-icon"><i class="fa-solid fa-handshake"></i></span><span class="dropdown-text"><span class="dropdown-title">Affiliations</span></span></a>
+            <a href="contact.html"><span class="dropdown-icon"><i class="fa-solid fa-envelope"></i></span><span class="dropdown-text"><span class="dropdown-title">Contact</span></span></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://wa.me/+917207080232" class="btn btn-primary nav-book" target="_blank" rel="noopener"><i class="fa-solid fa-comment"></i> Contact</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="committee-hero">
+  <div class="committee-hero-bg"></div>
+  <div class="container">
+    <div class="committee-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>&#x203A;</span><span>Club</span><span>&#x203A;</span><span>Club Committee</span>
+      </div>
+      <h1>Club Committee</h1>
+      <p>Meet the dedicated team shaping the vision and spirit of Youth Club.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COMMITTEE MEMBERS -->
+<section class="committee-section">
+  <div class="container">
+
+    <div class="committee-section-head reveal">
+      <span class="eyebrow">Leadership</span>
+      <h2>Club Committee Members</h2>
+      <p>The dedicated leaders who steer the vision, values, and spirit of Youth Cultural Association.</p>
+    </div>
+
+    <div class="committee-grid">
+
+      <div class="cm-card reveal">
+        <div class="cm-photo-frame">
+          <img src="images/member-g-venkata-narasimha-raju.png" alt="G. Venkata Narasimha Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">G. Venkata Narasimha Raju</p>
+          <p class="cm-telugu"></p>
+          <span class="cm-role">Honourable President</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-1">
+        <div class="cm-photo-frame">
+          <img src="images/member-v-suryanarayana-raju.png" alt="V. Suryanarayana Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">V. Suryanarayana Raju</p>
+          <p class="cm-telugu">(సూర్యనారాయణ రాజు)</p>
+          <span class="cm-role">President</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-2">
+        <div class="cm-photo-frame">
+          <img src="images/member-v-s-n-b-bangarraju.png" alt="V. S. N. B. Bangarraju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">V. S. N. B. Bangarraju</p>
+          <p class="cm-telugu">(వీఎస్ఎన్బీ.బంగర్రాజు)</p>
+          <span class="cm-role">Vice President</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-3">
+        <div class="cm-photo-frame">
+          <img src="images/member-v-r-k-anjaneya-raju.png" alt="V. R. K. Anjaneya Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">V. R. K. Anjaneya Raju</p>
+          <p class="cm-telugu">(వి.ఆర్.కే. అంజనేయ రాజు)</p>
+          <span class="cm-role">Vice President</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal">
+        <div class="cm-photo-frame">
+          <img src="images/member-p-venkata-srinivasa-raju.png" alt="P. Venkata Srinivasa Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">P. Venkata Srinivasa Raju</p>
+          <p class="cm-telugu">(కోలమూరు సుభాష్)</p>
+          <span class="cm-role">Secretary</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-1">
+        <div class="cm-photo-frame">
+          <img src="images/member-m-venkata-ramakrishnam-raju.png" alt="M. Venkata Ramakrishnam Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">M. Venkata Ramakrishnam Raju</p>
+          <p class="cm-telugu">(ర్యాంబో)</p>
+          <span class="cm-role">Joint Secretary</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-2">
+        <div class="cm-photo-frame">
+          <img src="images/member-v-rama-krishnam-raju.png" alt="V. Rama Krishnam Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">V. Rama Krishnam Raju</p>
+          <p class="cm-telugu">(జువ్వలపాలెం రామకృష్ణ)</p>
+          <span class="cm-role">Treasurer</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-3">
+        <div class="cm-photo-frame">
+          <img src="images/member-k-venkata-rama-suryanarayana-raju.png" alt="K. Venkata Rama Suryanarayana Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">K. Venkata Rama Suryanarayana Raju</p>
+          <p class="cm-telugu">(కోలమూరు రామసూరి)</p>
+          <span class="cm-role">Member</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal">
+        <div class="cm-photo-frame">
+          <img src="images/member-a-venkata-nagaraju.png" alt="A. Venkata Nagaraju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">A. Venkata Nagaraju</p>
+          <p class="cm-telugu">(కాళ్ళకూరు)</p>
+          <span class="cm-role">Member</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-1">
+        <div class="cm-photo-frame">
+          <img src="images/member-s-b-suryanarayana-raju.png" alt="S. B. Suryanarayana Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">S. B. Suryanarayana Raju</p>
+          <p class="cm-telugu">(రామేశ్వరం బాలరాజు)</p>
+          <span class="cm-role">Member</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-2">
+        <div class="cm-photo-frame">
+          <img src="images/member-m-srinivasa-raju.png" alt="M. Srinivasa Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">M. Srinivasa Raju</p>
+          <p class="cm-telugu">(ఎం.ఎస్.ఆర్)</p>
+          <span class="cm-role">Member</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-3">
+        <div class="cm-photo-frame">
+          <img src="images/member-k-venkata-kiran.png" alt="K. Venkata Kiran">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">K. Venkata Kiran</p>
+          <p class="cm-telugu">(ఐ. భీమవరం)</p>
+          <span class="cm-role">Member</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal">
+        <div class="cm-photo-frame">
+          <img src="images/member-b-ravi-kumar-raju.png" alt="B. Ravi Kumar Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">B. Ravi Kumar Raju</p>
+          <p class="cm-telugu">(ఆకివీడు రవి)</p>
+          <span class="cm-role">Member</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-1">
+        <div class="cm-photo-frame">
+          <img src="images/member-m-srinivasa-raju-2.png" alt="M. Srinivasa Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">M. Srinivasa Raju</p>
+          <p class="cm-telugu">(కొమ్మర వాసు)</p>
+          <span class="cm-role">Member</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-2">
+        <div class="cm-photo-frame">
+          <img src="images/member-k-rama-raju.png" alt="K. Rama Raju">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">K. Rama Raju</p>
+          <p class="cm-telugu">(భీమవరం)</p>
+          <span class="cm-role">Member</span>
+        </div>
+      </div>
+
+      <div class="cm-card reveal reveal-delay-3">
+        <div class="cm-photo-frame">
+          <img src="images/member-m-rajesh.png" alt="M. Rajesh">
+        </div>
+        <div class="cm-accent"></div>
+        <div class="cm-body">
+          <p class="cm-name">M. Rajesh</p>
+          <p class="cm-telugu">(పెద అమిరం)</p>
+          <span class="cm-role">Member</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo"><img src="images/logo.png" alt="Youth Cultural Association Logo"></a>
+        <p>Tammi Raju Nagar, Bhimavaram, Andhra Pradesh 534204</p>
+        <div class="dot-socials"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="contact.html">Contact info</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Meet Youth Club</h4>
+        <ul>
+          <li><a href="#">Terms and conditions</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Work with us</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Map</h4>
+        <div class="footer-map">
+          <iframe src="https://maps.google.com/maps?q=Youth+Cultural+Club+Bhimavaram+Andhra+Pradesh&output=embed&z=15" loading="lazy" title="Youth Cultural Club Location"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Youth Cultural Association. All Rights Reserved.</span>
+      <span>Bhimavaram, Andhra Pradesh, India</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="js/script.js"></script>
+<script>
+  (function() {
+    var overlay = document.getElementById('loadingOverlay');
+    if (overlay) {
+      var isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0] && performance.getEntriesByType('navigation')[0].type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+      var isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+      if (isReload || !isInternal) {
+        setTimeout(function() {
+          overlay.style.opacity = '0';
+          overlay.addEventListener('transitionend', function() { overlay.remove(); });
+        }, 1500);
+      } else {
+        overlay.remove();
+      }
+    }
+  })();
+</script>
+</body>
+</html>
