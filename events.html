@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — Youth Cultural Association Bhimavaram</title>
+  <meta name="description" content="Discover key events and tournaments hosted at Youth Cultural Association Bhimavaram, including All India Ranking Tennis, Skipping Tournaments, and Cultural Dance Performances.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── EVENT HERO ── */
+    .events-hero {
+      background: linear-gradient(135deg, #172554 0%, #323492 60%, #4048AB 100%);
+      padding: 110px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .events-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/event-tennis.jpg') center/cover no-repeat;
+      opacity: 0.12;
+    }
+    .events-hero .container { position: relative; z-index: 1; }
+    .events-hero .eyebrow { color: rgba(255,255,255,.8); }
+    .events-hero .eyebrow::before { background: rgba(255,255,255,.4); }
+    .events-hero h1 { color: #fff; font-size: clamp(30px, 4.5vw, 50px); margin: 14px 0 16px; font-family: 'League Spartan', sans-serif; font-weight: 700; }
+    .events-hero p { color: rgba(255,255,255,.75); font-size: 16px; max-width: 540px; margin: 0 auto 26px; }
+    .breadcrumb-light a { color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
+    .breadcrumb-light a:hover { color: #fff; }
+    .breadcrumb-light span { color: rgba(255,255,255,.4); margin: 0 8px; }
+    .breadcrumb-light .current { color: #F3C623; font-weight: 600; }
+
+    /* ── EVENTS SECTION ── */
+    .events-section {
+      padding: 60px 0 100px;
+      background: #F4F7FB;
+      min-height: 60vh;
+    }
+
+    .events-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    /* ── EVENT CARD ── */
+    .event-card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(23, 37, 84, 0.06);
+      border: 1px solid #E8EEF5;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(23, 37, 84, 0.11);
+      border-color: #D3DEEE;
+    }
+
+    /* Left Content */
+    .event-details {
+      padding: 44px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .event-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #EEF2FF;
+      color: #323492;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .event-title {
+      font-size: clamp(20px, 2.2vw, 25px);
+      font-weight: 700;
+      color: #172554;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .event-info-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .event-info-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .event-info-list li .bullet-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #323492;
+      border-radius: 50%;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .event-meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 8px 14px;
+      background: #F8FAFC;
+      border-radius: 8px;
+      border: 1px solid #E2E8F0;
+      color: #334155;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    .event-meta-badge i {
+      color: #323492;
+    }
+
+    /* Right Image */
+    .event-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      background: #E2E8F0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .event-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .event-card:hover .event-media img {
+      transform: scale(1.04);
+    }
+
+    .event-media-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(23, 37, 84, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .event-card:hover .event-media-overlay {
+      opacity: 1;
+    }
+
+    .event-zoom-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      color: #323492;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      transform: scale(0.9);
+      transition: transform 0.2s ease, background 0.2s;
+    }
+    .event-card:hover .event-zoom-btn {
+      transform: scale(1);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 15, 35, 0.94);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(6px);
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-modal img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 24px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 18px;
+      border-radius: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .event-card {
+        grid-template-columns: 1fr;
+      }
+      .event-media {
+        min-height: 250px;
+        order: -1;
+      }
+      .event-details {
+        padding: 30px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.4s ease;">
+  <video src="videos/Logo Loading.webm" autoplay muted loop playsinline style="max-width:150px;height:auto;"></video>
+  <video src="videos/Loading Bar.mp4" autoplay muted loop playsinline style="max-width:150px;height:auto;margin-top:12px;"></video>
+</div>
+<script>
+  (function() {
+    const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+    const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+    if (!isReload && isInternal) { document.getElementById('loadingOverlay').style.display = 'none'; }
+  })();
+</script>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="tel:+919133311326" class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-phone"></i></span>
+        <strong>9133311326</strong>
+      </a>
+      <span class="topbar-sep">|</span>
+      <a href="https://maps.google.com/?q=Tammi+Raju+Nagar+Bhimavaram" class="topbar-item" target="_blank" rel="noopener">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-location-dot"></i></span>
+        <span>Tammi Raju Nagar, Bhimavaram</span>
+      </a>
+      <span class="topbar-sep">|</span>
+      <span class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-door-open"></i></span>
+        <span>Rooms: <strong style="color:#2ecc71;">Available</strong></span>
+      </span>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-open">
+        <span class="topbar-dot"></span>
+        <span>Open now &nbsp;&bull;&nbsp; 8am &ndash; 11pm</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;">
+      <img src="images/logo.png" alt="Youth Cultural Association Bhimavaram">
+      <span style="display:flex;flex-direction:column;line-height:0.95;">
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Youth Cultural</strong>
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Association</strong>
+      </span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown"><a href="about.html">Club <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="club-committee.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-users-gear"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Club Committee</span></span>
+            </a>
+            <a href="about.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-building-columns"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Club Secretariat</span></span>
+            </a>
+          </div>
+        </li>
+        <li class="dropdown"><a href="index.html#sports">Sports <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu dropdown-grid">
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-baseball"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Tennis</span></span>
+              <span class="dropdown-badge">Courts</span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-dumbbell"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Gym</span></span>
+              <span class="dropdown-badge">Fitness</span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-feather"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Shuttle</span></span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Table Tennis</span></span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-circle-dot"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Billiards</span></span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-volleyball"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Volley Ball</span></span>
+            </a>
+          </div>
+        </li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="restaurant.html">Restaurant</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown active"><a href="events.html">Pages <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="gallery.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-images"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Gallery</span></span>
+            </a>
+            <a href="events.html" style="background:#F4F6FD;color:#323492;">
+              <span class="dropdown-icon"><i class="fa-solid fa-calendar-check"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Events</span></span>
+            </a>
+            <a href="affiliations.html"><span class="dropdown-icon"><i class="fa-solid fa-handshake"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Affiliations</span></span>
+            </a>
+            <a href="contact.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-envelope"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Contact</span></span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://wa.me/+917207080232" class="btn btn-primary nav-book" target="_blank" rel="noopener"><i class="fa-solid fa-comment"></i> Contact</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="events-hero">
+  <div class="container">
+    <span class="eyebrow">Moments &amp; Tournaments</span>
+    <h1>Events</h1>
+    <p>Highlights of prestigious tournaments, sports gatherings, and cultural performances hosted at Youth Cultural Association.</p>
+    <div class="breadcrumb-light">
+      <a href="index.html">Home</a><span>&#8250;</span><span class="current">Events</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN EVENTS CONTENT -->
+<section class="events-section">
+  <div class="container">
+    <div class="events-container">
+
+      <!-- Event 1: Tennis Tournament -->
+      <article class="event-card">
+        <div class="event-details">
+          <div class="event-tag"><i class="fa-solid fa-trophy"></i> Sports Championship</div>
+          <h2 class="event-title">All India Ranking Tennis Tournament</h2>
+          <ul class="event-info-list">
+            <li>
+              <span class="bullet-dot"></span>
+              <span>All India Ranking Tennis Tournament</span>
+            </li>
+            <li>
+              <span class="bullet-dot"></span>
+              <span>Under 16 &amp; 18 Boys And Girls</span>
+            </li>
+            <li>
+              <span class="bullet-dot"></span>
+              <span>12-11-2017 to 17-11-2017</span>
+            </li>
+          </ul>
+          <div class="event-meta-badge">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>12 Nov 2017 &ndash; 17 Nov 2017</span>
+          </div>
+        </div>
+        <div class="event-media" onclick="openLightbox('images/event-tennis.jpg', 'All India Ranking Tennis Tournament')">
+          <img src="images/event-tennis.jpg" alt="All India Ranking Tennis Tournament - Under 16 & 18 Boys And Girls" loading="lazy">
+          <div class="event-media-overlay">
+            <div class="event-zoom-btn" title="View full image"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 2: Skipping Tournament -->
+      <article class="event-card">
+        <div class="event-details">
+          <div class="event-tag"><i class="fa-solid fa-medal"></i> Youth Sports</div>
+          <h2 class="event-title">Skipping Tournament</h2>
+          <ul class="event-info-list">
+            <li>
+              <span class="bullet-dot"></span>
+              <span>Skipping Tournament</span>
+            </li>
+          </ul>
+          <div class="event-meta-badge">
+            <i class="fa-solid fa-person-running"></i>
+            <span>Youth Skipping Competition</span>
+          </div>
+        </div>
+        <div class="event-media" onclick="openLightbox('images/event-skipping.jpg', 'Skipping Tournament')">
+          <img src="images/event-skipping.jpg" alt="Skipping Tournament at Youth Cultural Club" loading="lazy">
+          <div class="event-media-overlay">
+            <div class="event-zoom-btn" title="View full image"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 3: Cultural Dance Performance -->
+      <article class="event-card">
+        <div class="event-details">
+          <div class="event-tag"><i class="fa-solid fa-masks-theater"></i> Cultural Event</div>
+          <h2 class="event-title">Cultural Dance Performance</h2>
+          <ul class="event-info-list">
+            <li>
+              <span class="bullet-dot"></span>
+              <span>Cultural Dance Performance</span>
+            </li>
+          </ul>
+          <div class="event-meta-badge">
+            <i class="fa-solid fa-music"></i>
+            <span>Classical Dance &amp; Art Academy Presentation</span>
+          </div>
+        </div>
+        <div class="event-media" onclick="openLightbox('images/event-dance.jpg', 'Cultural Dance Performance')">
+          <img src="images/event-dance.jpg" alt="Cultural Dance Performance at Youth Cultural Club" loading="lazy">
+          <div class="event-media-overlay">
+            <div class="event-zoom-btn" title="View full image"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox-modal" id="eventLightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close image">&times;</button>
+  <img id="lightboxImg" src="" alt="Event Image">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">
+          <img src="images/logo.png" alt="Youth Cultural Association Logo">
+        </a>
+        <p>Tammi Raju Nagar, Bhimavaram, Andhra Pradesh 534204</p>
+        <div class="dot-socials">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="contact.html">Contact info</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Meet Youth Club</h4>
+        <ul>
+          <li><a href="#">Terms and conditions</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Work with us</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Map</h4>
+        <div class="footer-map">
+          <iframe src="https://maps.google.com/maps?q=Youth+Cultural+Club+Bhimavaram+Andhra+Pradesh&output=embed&z=15" loading="lazy" title="Youth Cultural Club Location"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Youth Cultural Association. All Rights Reserved.</span>
+      <span>Bhimavaram, Andhra Pradesh, India</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="js/script.js"></script>
+<script>
+  (function() {
+    const overlay = document.getElementById('loadingOverlay');
+    if (overlay) {
+      const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+      const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+      if (isReload || !isInternal) {
+        setTimeout(() => {
+          overlay.style.opacity = '0';
+          overlay.addEventListener('transitionend', () => overlay.remove());
+        }, 1500);
+      } else {
+        overlay.remove();
+      }
+    }
+  })();
+
+  function openLightbox(src, caption) {
+    const modal = document.getElementById('eventLightbox');
+    const img = document.getElementById('lightboxImg');
+    const cap = document.getElementById('lightboxCaption');
+    img.src = src;
+    img.alt = caption;
+    cap.textContent = caption;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    if (e.target.id === 'eventLightbox' || e.target.classList.contains('lightbox-close') || e.target.tagName === 'BUTTON') {
+      const modal = document.getElementById('eventLightbox');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('eventLightbox');
+      if (modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+  });
+</script>
+</body>
+</html>

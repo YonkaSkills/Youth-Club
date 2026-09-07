@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliations — Youth Cultural Association Bhimavaram</title>
+  <meta name="description" content="Affiliated and reciprocal clubs of Youth Cultural Association Bhimavaram across Andhra Pradesh and Telangana.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── HERO ── */
+    .aff-hero {
+      background: linear-gradient(135deg, #172554 0%, #323492 60%, #4048AB 100%);
+      padding: 110px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .aff-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(243,198,35,0.18), transparent 60%);
+      pointer-events: none;
+    }
+    .aff-hero .container { position: relative; z-index: 1; }
+    .aff-hero .eyebrow { color: rgba(255,255,255,.8); }
+    .aff-hero .eyebrow::before { background: rgba(255,255,255,.4); }
+    .aff-hero h1 {
+      color: #fff;
+      font-size: clamp(30px, 4.5vw, 50px);
+      margin: 14px 0 16px;
+      font-family: 'League Spartan', sans-serif;
+      font-weight: 700;
+    }
+    .aff-hero p {
+      color: rgba(255,255,255,.75);
+      font-size: 16px;
+      max-width: 580px;
+      margin: 0 auto 26px;
+    }
+    .breadcrumb-light a { color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
+    .breadcrumb-light a:hover { color: #fff; }
+    .breadcrumb-light span { color: rgba(255,255,255,.4); margin: 0 8px; }
+    .breadcrumb-light .current { color: #F3C623; font-weight: 600; }
+
+    /* ── SECTION ── */
+    .aff-section {
+      padding: 60px 0 100px;
+      background: #F8FAFC;
+    }
+
+    /* Reciprocal Notice Bar */
+    .aff-notice {
+      background: #FFFFFF;
+      border-left: 4px solid #323492;
+      border-radius: 12px;
+      padding: 20px 24px;
+      box-shadow: 0 4px 16px rgba(23,37,84,0.05);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 38px;
+    }
+    .aff-notice-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #EEF2FF;
+      color: #323492;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .aff-notice-text h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #172554;
+      margin-bottom: 3px;
+    }
+    .aff-notice-text p {
+      font-size: 13.5px;
+      color: #64748B;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── CARDS GRID ── */
+    .aff-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
+      margin-bottom: 50px;
+    }
+
+    .aff-card {
+      background: #FFFFFF;
+      border-radius: 18px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .aff-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(23, 37, 84, 0.09);
+      border-color: #CBD5E1;
+    }
+
+    .aff-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      gap: 12px;
+    }
+
+    .aff-sno-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #323492, #4048AB);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .aff-city-tag {
+      background: #F1F5F9;
+      color: #475569;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .aff-club-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.35;
+      margin-bottom: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .aff-meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex-grow: 1;
+    }
+
+    .aff-meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .aff-meta-item i {
+      color: #323492;
+      font-size: 15px;
+      margin-top: 3px;
+      flex-shrink: 0;
+      width: 16px;
+      text-align: center;
+    }
+
+    .aff-meta-item strong {
+      color: #1E293B;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .aff-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid #F1F5F9;
+      margin-top: auto;
+    }
+
+    .aff-action-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .aff-action-btn.primary {
+      background: #323492;
+      color: #FFFFFF;
+    }
+    .aff-action-btn.primary:hover {
+      background: #252875;
+    }
+
+    .aff-action-btn.outline {
+      background: #F8FAFC;
+      color: #334155;
+      border: 1px solid #E2E8F0;
+    }
+    .aff-action-btn.outline:hover {
+      background: #EDF2F7;
+      border-color: #CBD5E1;
+      color: #0F172A;
+    }
+
+    /* ── EXACT DIRECTORY TABLE (Styled beautifully) ── */
+    .aff-table-wrapper {
+      background: #FFFFFF;
+      border-radius: 18px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+      border: 1px solid #E2E8F0;
+      overflow: hidden;
+    }
+
+    .aff-table-header {
+      padding: 22px 28px;
+      border-bottom: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: #FAFCFE;
+    }
+
+    .aff-table-header h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #172554;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .aff-table-header span {
+      font-size: 13px;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    .aff-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .aff-table th {
+      background: #F1F5F9;
+      color: #1E293B;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 16px 24px;
+      border-bottom: 1px solid #CBD5E1;
+    }
+
+    .aff-table td {
+      padding: 24px;
+      border-bottom: 1px solid #F1F5F9;
+      font-size: 14.5px;
+      color: #334155;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .aff-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .aff-table tr:hover td {
+      background: #F8FAFC;
+    }
+
+    .aff-table .col-sno {
+      width: 80px;
+      text-align: center;
+      font-weight: 700;
+      color: #64748B;
+      font-size: 15px;
+    }
+
+    .aff-table .col-name {
+      width: 40%;
+    }
+
+    .aff-table .col-name strong {
+      display: block;
+      color: #0F172A;
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .aff-table .col-phone {
+      width: 25%;
+    }
+
+    .aff-table .col-web {
+      width: 25%;
+    }
+
+    .table-link {
+      color: #323492;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .table-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .aff-table-wrapper {
+        overflow-x: auto;
+      }
+      .aff-table {
+        min-width: 650px;
+      }
+      .aff-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.4s ease;">
+  <video src="videos/Logo Loading.webm" autoplay muted loop playsinline style="max-width:150px;height:auto;"></video>
+  <video src="videos/Loading Bar.mp4" autoplay muted loop playsinline style="max-width:150px;height:auto;margin-top:12px;"></video>
+</div>
+<script>
+  (function() {
+    const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+    const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+    if (!isReload && isInternal) { document.getElementById('loadingOverlay').style.display = 'none'; }
+  })();
+</script>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="tel:+919133311326" class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-phone"></i></span>
+        <strong>9133311326</strong>
+      </a>
+      <span class="topbar-sep">|</span>
+      <a href="https://maps.google.com/?q=Tammi+Raju+Nagar+Bhimavaram" class="topbar-item" target="_blank" rel="noopener">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-location-dot"></i></span>
+        <span>Tammi Raju Nagar, Bhimavaram</span>
+      </a>
+      <span class="topbar-sep">|</span>
+      <span class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-door-open"></i></span>
+        <span>Rooms: <strong style="color:#2ecc71;">Available</strong></span>
+      </span>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-open">
+        <span class="topbar-dot"></span>
+        <span>Open now &nbsp;&bull;&nbsp; 8am &ndash; 11pm</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;">
+      <img src="images/logo.png" alt="Youth Cultural Association Bhimavaram">
+      <span style="display:flex;flex-direction:column;line-height:0.95;">
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Youth Cultural</strong>
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Association</strong>
+      </span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown"><a href="about.html">Club <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="club-committee.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-users-gear"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Club Committee</span></span>
+            </a>
+            <a href="about.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-building-columns"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Club Secretariat</span></span>
+            </a>
+          </div>
+        </li>
+        <li class="dropdown"><a href="index.html#sports">Sports <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu dropdown-grid">
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-baseball"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Tennis</span></span>
+              <span class="dropdown-badge">Courts</span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-dumbbell"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Gym</span></span>
+              <span class="dropdown-badge">Fitness</span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-feather"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Shuttle</span></span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Table Tennis</span></span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-circle-dot"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Billiards</span></span>
+            </a>
+            <a href="index.html#sports">
+              <span class="dropdown-icon"><i class="fa-solid fa-volleyball"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Volley Ball</span></span>
+            </a>
+          </div>
+        </li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="restaurant.html">Restaurant</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown active"><a href="affiliations.html">Pages <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="gallery.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-images"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Gallery</span></span>
+            </a>
+            <a href="events.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-calendar-check"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Events</span></span>
+            </a>
+            <a href="affiliations.html" style="background:#F4F6FD;color:#323492;">
+              <span class="dropdown-icon"><i class="fa-solid fa-handshake"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Affiliations</span></span>
+            </a>
+            <a href="contact.html">
+              <span class="dropdown-icon"><i class="fa-solid fa-envelope"></i></span>
+              <span class="dropdown-text"><span class="dropdown-title">Contact</span></span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://wa.me/+917207080232" class="btn btn-primary nav-book" target="_blank" rel="noopener"><i class="fa-solid fa-comment"></i> Contact</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="aff-hero">
+  <div class="container">
+    <span class="eyebrow">Reciprocal Privileges</span>
+    <h1>Club Affiliations</h1>
+    <p>Youth Cultural Association members enjoy reciprocal dining, sports, and guest privileges at our prestigious affiliate clubs.</p>
+    <div class="breadcrumb-light">
+      <a href="index.html">Home</a><span>&#8250;</span><span class="current">Affiliations</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN SECTION -->
+<section class="aff-section">
+  <div class="container">
+
+    <!-- Notice Bar -->
+    <div class="aff-notice">
+      <div class="aff-notice-icon">
+        <i class="fa-solid fa-circle-info"></i>
+      </div>
+      <div class="aff-notice-text">
+        <h4>Reciprocal Visit Guidelines</h4>
+        <p>Members visiting affiliated clubs are kindly requested to present their active YCA Membership Card and obtain a formal Letter of Introduction from the club office prior to travel.</p>
+      </div>
+    </div>
+
+    <!-- CARDS DISPLAY -->
+    <div class="aff-cards-grid">
+
+      <!-- Club 1: Kakinada -->
+      <article class="aff-card">
+        <div class="aff-card-header">
+          <div class="aff-sno-badge">1</div>
+          <span class="aff-city-tag"><i class="fa-solid fa-location-dot"></i> Kakinada</span>
+        </div>
+        <h2 class="aff-club-name">Pydah Venkata Chalapathy Town Hall</h2>
+        <ul class="aff-meta-list">
+          <li class="aff-meta-item">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <div>
+              <strong>Address</strong>
+              13-1-30, Main Road, Kakinada, Andhra Pradesh
+            </div>
+          </li>
+          <li class="aff-meta-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>Telephone</strong>
+              <a href="tel:08842373165" class="table-link">0884-2373165</a>
+            </div>
+          </li>
+          <li class="aff-meta-item">
+            <i class="fa-solid fa-globe"></i>
+            <div>
+              <strong>Email / Website</strong>
+              <span style="color:#94A3B8;">&mdash;</span>
+            </div>
+          </li>
+        </ul>
+        <div class="aff-actions">
+          <a href="tel:08842373165" class="aff-action-btn primary">
+            <i class="fa-solid fa-phone"></i> Call Club
+          </a>
+          <a href="https://maps.google.com/?q=Pydah+Venkata+Chalapathy+Town+Hall+Main+Road+Kakinada" target="_blank" rel="noopener" class="aff-action-btn outline">
+            <i class="fa-solid fa-diamond-turn-right"></i> Directions
+          </a>
+        </div>
+      </article>
+
+      <!-- Club 2: Hyderabad -->
+      <article class="aff-card">
+        <div class="aff-card-header">
+          <div class="aff-sno-badge">2</div>
+          <span class="aff-city-tag"><i class="fa-solid fa-location-dot"></i> Hyderabad</span>
+        </div>
+        <h2 class="aff-club-name">Film Nagar Cultural Center</h2>
+        <ul class="aff-meta-list">
+          <li class="aff-meta-item">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <div>
+              <strong>Address</strong>
+              Road No: 6, Behind The RamaNaidu Building, Film Nagar, Hyderabad &ndash; 500096
+            </div>
+          </li>
+          <li class="aff-meta-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>Telephone</strong>
+              <a href="tel:+914023636100" class="table-link">+91 (40) 23 636 100</a>
+            </div>
+          </li>
+          <li class="aff-meta-item">
+            <i class="fa-solid fa-globe"></i>
+            <div>
+              <strong>Website</strong>
+              <a href="https://fncc.in" target="_blank" rel="noopener" class="table-link">
+                fncc.in <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+        <div class="aff-actions">
+          <a href="tel:+914023636100" class="aff-action-btn primary">
+            <i class="fa-solid fa-phone"></i> Call Club
+          </a>
+          <a href="https://fncc.in" target="_blank" rel="noopener" class="aff-action-btn outline">
+            <i class="fa-solid fa-globe"></i> Visit Website
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- CLEAN DIRECTORY TABLE -->
+    <div class="aff-table-wrapper">
+      <div class="aff-table-header">
+        <h3><i class="fa-solid fa-table-list" style="color:#323492;"></i> Affiliated Clubs Directory</h3>
+        <span>Showing 2 affiliated clubs</span>
+      </div>
+      <table class="aff-table">
+        <thead>
+          <tr>
+            <th class="col-sno">S.No</th>
+            <th class="col-name">Club Name &amp; Address</th>
+            <th class="col-phone">Phone</th>
+            <th class="col-web">Email / Website</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-sno">1</td>
+            <td class="col-name">
+              <strong>Pydah Venkata Chalapathy Town Hall</strong>
+              <div>13-1-30, Main Road, Kakinada</div>
+            </td>
+            <td class="col-phone">
+              <div><strong>Tel :</strong> <a href="tel:08842373165" class="table-link">0884-2373165</a></div>
+            </td>
+            <td class="col-web">
+              <div><strong>Email :</strong> &mdash;</div>
+              <div><strong>Website :</strong> &mdash;</div>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-sno">2</td>
+            <td class="col-name">
+              <strong>Film Nagar Cultural Center</strong>
+              <div>Road No: 6, Behind The RamaNaidu Building,<br>Film Nagar, HYDERABAD &ndash; 500096</div>
+            </td>
+            <td class="col-phone">
+              <div><strong>Tel :</strong> <a href="tel:+914023636100" class="table-link">+91 (40) 23 636 100</a></div>
+            </td>
+            <td class="col-web">
+              <div><strong>Email :</strong> &mdash;</div>
+              <div><strong>Website :</strong> <a href="https://fncc.in" target="_blank" rel="noopener" class="table-link">fncc.in <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;"></i></a></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">
+          <img src="images/logo.png" alt="Youth Cultural Association Logo">
+        </a>
+        <p>Tammi Raju Nagar, Bhimavaram, Andhra Pradesh 534204</p>
+        <div class="dot-socials">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="contact.html">Contact info</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Meet Youth Club</h4>
+        <ul>
+          <li><a href="#">Terms and conditions</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Work with us</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Map</h4>
+        <div class="footer-map">
+          <iframe src="https://maps.google.com/maps?q=Youth+Cultural+Club+Bhimavaram+Andhra+Pradesh&output=embed&z=15" loading="lazy" title="Youth Cultural Club Location"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Youth Cultural Association. All Rights Reserved.</span>
+      <span>Bhimavaram, Andhra Pradesh, India</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="js/script.js"></script>
+<script>
+  (function() {
+    const overlay = document.getElementById('loadingOverlay');
+    if (overlay) {
+      const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+      const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+      if (isReload || !isInternal) {
+        setTimeout(() => {
+          overlay.style.opacity = '0';
+          overlay.addEventListener('transitionend', () => overlay.remove());
+        }, 1500);
+      } else {
+        overlay.remove();
+      }
+    }
+  })();
+</script>
+</body>
+</html>
