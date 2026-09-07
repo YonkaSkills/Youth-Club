@@ -15,17 +15,22 @@
 <link rel="stylesheet" href="css/style.css">
 <style>
 /* ── CLUB COMMITTEE PAGE ── */
-.committee-hero{position:relative;min-height:420px;display:flex;align-items:flex-end;overflow:hidden;padding:0;}
+.committee-hero{position:relative;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0;}
 .committee-hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0d1240 0%,#1b2363 60%,#2d3590 100%);}
 .committee-hero-bg::after{content:'';position:absolute;inset:0;background:url('images/1.jpg') center/cover no-repeat;opacity:0.22;mix-blend-mode:luminosity;}
 .committee-hero-bg::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:32px 32px;z-index:1;}
-.committee-hero-content{position:relative;z-index:2;width:100%;padding:80px 0 56px;}
-.committee-hero-content .breadcrumb{margin-bottom:18px;}
-.committee-hero-content .breadcrumb a,.committee-hero-content .breadcrumb span{color:rgba(255,255,255,0.65);font-size:13px;}
+.committee-hero-content{position:relative;z-index:2;width:100%;max-width:760px;margin:0 auto;text-align:center;padding:80px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.committee-hero-content .breadcrumb{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-bottom:20px;}
+.committee-hero-content .breadcrumb a,.committee-hero-content .breadcrumb span{color:rgba(255,255,255,0.65);font-size:13.5px;}
 .committee-hero-content .breadcrumb span:last-child{color:#fff;font-weight:600;}
-.committee-hero-content h1{font-size:clamp(2.2rem,5vw,3.8rem);color:#fff;font-weight:800;line-height:1.12;margin-bottom:16px;max-width:640px;}
-.committee-hero-content p{color:rgba(255,255,255,0.78);font-size:17px;max-width:540px;line-height:1.7;}
-@media(max-width:640px){.committee-hero-content{padding:60px 0 40px;}}
+.committee-hero-content h1{font-size:clamp(2.5rem,5.5vw,4.2rem);color:#fff;font-weight:800;line-height:1.15;margin-bottom:18px;letter-spacing:-0.02em;}
+.committee-hero-content p{color:rgba(255,255,255,0.8);font-size:clamp(16px,1.8vw,18px);max-width:580px;line-height:1.65;margin:0 auto;}
+@media(max-width:640px){
+  .committee-hero{min-height:360px;}
+  .committee-hero-content{padding:60px 16px 40px;}
+  .committee-hero-content .breadcrumb{margin-bottom:16px;}
+  .committee-hero-content h1{margin-bottom:14px;}
+}
 
 /* ── COMMITTEE MEMBERS SECTION ── */
 .committee-section{
