@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Youth Cultural Association Bhimavaram</title>
+  <meta name="description" content="Explore photos from Youth Cultural Association Bhimavaram — moments from our sports, events, dining, rooms, and club life.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gallery-hero {
+      background: linear-gradient(135deg, #172554 0%, #323492 60%, #4048AB 100%);
+      padding: 110px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/ycaimg4.jpg') center/cover no-repeat;
+      opacity: 0.13;
+    }
+    .gallery-hero .container { position: relative; z-index: 1; }
+    .gallery-hero .eyebrow { color: rgba(255,255,255,.75); }
+    .gallery-hero .eyebrow::before { background: rgba(255,255,255,.4); }
+    .gallery-hero h1 { color: #fff; font-size: clamp(30px, 4.5vw, 52px); margin: 14px 0 18px; }
+    .gallery-hero p { color: rgba(255,255,255,.7); font-size: 16px; max-width: 520px; margin: 0 auto 28px; }
+    .breadcrumb-light a { color: rgba(255,255,255,.55); }
+    .breadcrumb-light span { color: rgba(255,255,255,.35); margin: 0 8px; }
+    .breadcrumb-light .current { color: #F3C623; font-weight: 600; }
+
+    .gallery-section { padding: 0 0 100px; background: #F8FAFC; }
+
+    .gallery-filters {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; padding: 46px 0 28px;
+    }
+    .gal-tab {
+      padding: 10px 24px; border-radius: 999px; border: 1.5px solid #E2E8F0;
+      background: #fff; color: #64748B; font-size: 13.5px; font-weight: 600;
+      font-family: 'Inter', sans-serif; cursor: pointer; transition: all .25s ease;
+      user-select: none;
+    }
+    .gal-tab:hover { border-color: #323492; color: #323492; transform: translateY(-1px); }
+    .gal-tab.active {
+      background: linear-gradient(135deg,#323492,#4048AB); border-color: transparent;
+      color: #fff; box-shadow: 0 6px 18px -4px rgba(50,52,146,.45);
+    }
+
+    .gallery-count { text-align: center; color: #64748B; font-size: 13.5px; margin-bottom: 26px; }
+    .gallery-count strong { color: #172554; font-weight: 700; }
+
+    .gallery-grid { columns: 4; column-gap: 18px; }
+    @media(max-width:1100px){ .gallery-grid { columns: 3; column-gap: 16px; } }
+    @media(max-width:768px)  { .gallery-grid { columns: 2; column-gap: 14px; } }
+    @media(max-width:480px)  { .gallery-grid { columns: 1; } }
+
+    .gallery-item {
+      break-inside: avoid; margin-bottom: 18px; border-radius: 18px; overflow: hidden;
+      position: relative; cursor: pointer; display: block;
+      box-shadow: 0 4px 16px rgba(20,30,70,.07); transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
+      background: #E2E8F0;
+    }
+    .gallery-item.hidden { display: none; }
+    .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(20,30,70,.14); }
+    .gallery-item img { width: 100%; height: auto; display: block; transition: transform .45s ease; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item .item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,23,42,.85) 0%, rgba(15,23,42,.2) 45%, transparent 75%);
+      opacity: 0; transition: opacity .3s ease; display: flex; align-items: flex-end; justify-content: space-between; padding: 16px 18px;
+      gap: 12px;
+    }
+    .gallery-item:hover .item-overlay { opacity: 1; }
+    .gallery-item .item-title {
+      color: #fff; font-size: 13.5px; font-weight: 600; font-family: 'Inter', sans-serif;
+      text-shadow: 0 1px 4px rgba(0,0,0,.6); line-height: 1.35;
+    }
+    .zoom-icon {
+      flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,.2); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; color: #fff;
+      font-size: 13px; border: 1px solid rgba(255,255,255,.35);
+    }
+
+    .lightbox-overlay {
+      position: fixed; inset: 0; background: rgba(8,12,36,.96);
+      z-index: 9000; display: none; align-items: center; justify-content: center;
+      backdrop-filter: blur(8px); padding: 20px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-inner {
+      position: relative; max-width: 960px; width: 100%; max-height: 82vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-inner img {
+      max-width: 100%; max-height: 80vh; border-radius: 16px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.7); object-fit: contain;
+      transition: opacity .18s;
+    }
+    .lb-close {
+      position: fixed; top: 20px; right: 24px; width: 44px; height: 44px;
+      border-radius: 50%; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center;
+      justify-content: center; transition: background .25s; z-index: 9001;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.25); }
+    .lb-arrow {
+      position: fixed; top: 50%; transform: translateY(-50%); width: 48px; height: 48px;
+      border-radius: 50%; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: #fff; font-size: 17px; cursor: pointer; display: flex; align-items: center;
+      justify-content: center; transition: background .25s; z-index: 9001;
+    }
+    .lb-arrow:hover { background: rgba(255,255,255,.25); }
+    .lb-arrow.prev { left: 18px; }
+    .lb-arrow.next { right: 18px; }
+    .lb-bottom-bar {
+      position: fixed; bottom: 20px; left: 0; right: 0;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      pointer-events: none; z-index: 9001;
+    }
+    .lb-caption {
+      color: #fff; font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif;
+      text-shadow: 0 2px 8px rgba(0,0,0,.8); text-align: center; max-width: 80%;
+    }
+    .lb-counter {
+      color: rgba(255,255,255,.55); font-size: 13px; font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.4s ease;">
+  <video src="videos/Logo Loading.webm" autoplay muted loop playsinline style="max-width:150px;height:auto;"></video>
+  <video src="videos/Loading Bar.mp4" autoplay muted loop playsinline style="max-width:150px;height:auto;margin-top:12px;"></video>
+</div>
+<script>
+  (function() {
+    const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+    const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+    if (!isReload && isInternal) { document.getElementById('loadingOverlay').style.display = 'none'; }
+  })();
+</script>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="tel:+919133311326" class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-phone"></i></span>
+        <strong>9133311326</strong>
+      </a>
+      <span class="topbar-sep">|</span>
+      <a href="https://maps.google.com/?q=Tammi+Raju+Nagar+Bhimavaram" class="topbar-item" target="_blank" rel="noopener">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-location-dot"></i></span>
+        <span>Tammi Raju Nagar, Bhimavaram</span>
+      </a>
+      <span class="topbar-sep">|</span>
+      <span class="topbar-item">
+        <span class="topbar-icon-badge"><i class="fa-solid fa-door-open"></i></span>
+        <span>Rooms: <strong style="color:#2ecc71;">Available</strong></span>
+      </span>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-open">
+        <span class="topbar-dot"></span>
+        <span>Open now &nbsp;&bull;&nbsp; 8am &ndash; 11pm</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="navbar" id="mainNav">
+  <div class="container">
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;">
+      <img src="images/logo.png" alt="Youth Cultural Association Bhimavaram">
+      <span style="display:flex;flex-direction:column;line-height:0.95;">
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Youth Cultural</strong>
+        <strong style="color:#34378B;font-size:clamp(16px,1.8vw,23px);font-family:'League Spartan',sans-serif;font-weight:500;letter-spacing:-0.2px;text-transform:none;">Association</strong>
+      </span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown"><a href="about.html">Club <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="about.html"><span class="dropdown-icon"><i class="fa-solid fa-users-gear"></i></span><span class="dropdown-text"><span class="dropdown-title">Club Committee</span></span></a>
+            <a href="about.html"><span class="dropdown-icon"><i class="fa-solid fa-building-columns"></i></span><span class="dropdown-text"><span class="dropdown-title">Club Secretariat</span></span></a>
+          </div>
+        </li>
+        <li class="dropdown"><a href="index.html#sports">Sports <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu dropdown-grid">
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-baseball"></i></span><span class="dropdown-text"><span class="dropdown-title">Tennis</span></span><span class="dropdown-badge">Courts</span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-dumbbell"></i></span><span class="dropdown-text"><span class="dropdown-title">Gym</span></span><span class="dropdown-badge">Fitness</span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-feather"></i></span><span class="dropdown-text"><span class="dropdown-title">Shuttle</span></span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></span><span class="dropdown-text"><span class="dropdown-title">Table Tennis</span></span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-circle-dot"></i></span><span class="dropdown-text"><span class="dropdown-title">Billiards</span></span></a>
+            <a href="index.html#sports"><span class="dropdown-icon"><i class="fa-solid fa-volleyball"></i></span><span class="dropdown-text"><span class="dropdown-title">Volley Ball</span></span></a>
+          </div>
+        </li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="restaurant.html">Restaurant</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown active"><a href="gallery.html">Pages <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+          <div class="dropdown-menu">
+            <a href="gallery.html"><span class="dropdown-icon"><i class="fa-solid fa-images"></i></span><span class="dropdown-text"><span class="dropdown-title">Gallery</span></span></a>
+            <a href="#"><span class="dropdown-icon"><i class="fa-solid fa-calendar-check"></i></span><span class="dropdown-text"><span class="dropdown-title">Events</span></span></a>
+            <a href="#"><span class="dropdown-icon"><i class="fa-solid fa-handshake"></i></span><span class="dropdown-text"><span class="dropdown-title">Affiliations</span></span></a>
+            <a href="contact.html"><span class="dropdown-icon"><i class="fa-solid fa-envelope"></i></span><span class="dropdown-text"><span class="dropdown-title">Contact</span></span></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://wa.me/+917207080232" class="btn btn-primary nav-book" target="_blank" rel="noopener"><i class="fa-solid fa-comment"></i> Contact</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="gallery-hero">
+  <div class="container">
+    <span class="eyebrow">Our Moments</span>
+    <h1>Club Gallery</h1>
+    <p>A glimpse into the life, events, and spaces that make Youth Cultural Association Bhimavaram a cherished home for its members.</p>
+    <div class="breadcrumb-light">
+      <a href="index.html">Home</a><span>&#8250;</span><span class="current">Gallery</span>
+    </div>
+  </div>
+</div>
+
+<section class="gallery-section">
+  <div class="container">
+    <div class="gallery-filters">
+      <button class="gal-tab active" data-filter="all" id="gal-all">All Photos</button>
+      <button class="gal-tab" data-filter="club" id="gal-club">Club &amp; Grounds</button>
+      <button class="gal-tab" data-filter="games" id="gal-games">Games &amp; Sports</button>
+      <button class="gal-tab" data-filter="facilities" id="gal-facilities">Facilities</button>
+      <button class="gal-tab" data-filter="rooms" id="gal-rooms">Rooms</button>
+      <button class="gal-tab" data-filter="dining" id="gal-dining">Dining</button>
+      <button class="gal-tab" data-filter="events" id="gal-events">Events</button>
+    </div>
+    <p class="gallery-count"><strong id="visibleCount">0</strong> photos</p>
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- ── CLUB & GROUNDS ── -->
+      <div class="gallery-item" data-category="club" data-src="images/ycasite1.jpg">
+        <img src="images/ycasite1.jpg" alt="Youth Cultural Association Aerial View" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Club Aerial View</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="club" data-src="images/ycasite14.jpg">
+        <img src="images/ycasite14.jpg" alt="Youth Club Entrance Gate" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Main Entrance Gate</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="club" data-src="images/ycasite22.jpg">
+        <img src="images/ycasite22.jpg" alt="YCA Club House" loading="lazy">
+        <div class="item-overlay"><span class="item-title">YCA Club House</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="club" data-src="images/ycasite13.jpg">
+        <img src="images/ycasite13.jpg" alt="Gokaraju Ranga Raju Bhavan" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Gokaraju Ranga Raju Bhavan</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="club" data-src="images/ycasite16.jpg">
+        <img src="images/ycasite16.jpg" alt="Club Bhavan Aerial View" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Club Bhavan Aerial View</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="club" data-src="images/ycasite15.jpg">
+        <img src="images/ycasite15.jpg" alt="Club Bhavan Parking &amp; Forecourt" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Parking &amp; Forecourt</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="club" data-src="images/ycasite10.jpg">
+        <img src="images/ycasite10.jpg" alt="Gokaraju Ranga Raju Bhavan Entrance" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Ranga Raju Bhavan Entrance</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="club" data-src="images/ycasite12.jpg">
+        <img src="images/ycasite12.jpg" alt="Conference Hall &amp; Canteen Building" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Conference Hall &amp; Canteen</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="club" data-src="images/ycasite2.jpg">
+        <img src="images/ycasite2.jpg" alt="Club Reception &amp; Welcome Lobby" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Club Reception Lobby</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+
+      <!-- ── GAMES & SPORTS ── -->
+      <div class="gallery-item" data-category="games" data-src="images/ycasite5.jpg">
+        <img src="images/ycasite5.jpg" alt="Tennis Courts Aerial View" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Tennis Courts Aerial View</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="games" data-src="images/ycasite4.jpg">
+        <img src="images/ycasite4.jpg" alt="Alluri Sita Rama Raju Statue &amp; Tennis Complex" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Alluri Statue &amp; Tennis Courts</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="games" data-src="images/ycasite52.jpg">
+        <img src="images/ycasite52.jpg" alt="Tennis Tournament Inauguration" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Tennis Tournament Inauguration</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="games" data-src="images/ycasite55.jpg">
+        <img src="images/ycasite55.jpg" alt="Tennis Match in Action" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Tennis Match in Action</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="games" data-src="images/ycasite18.jpg">
+        <img src="images/ycasite18.jpg" alt="Badminton Court — Indoor Stadium" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Badminton Indoor Court</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="games" data-src="images/ycasite17.jpg">
+        <img src="images/ycasite17.jpg" alt="Table Tennis Arena" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Table Tennis Arena</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="games" data-src="images/ycasite19.jpg">
+        <img src="images/ycasite19.jpg" alt="Table Tennis &amp; Billiards Hall" loading="lazy">
+        <div class="item-overlay"><span class="item-title">TT &amp; Billiards Hall</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="games" data-src="images/ycasite8.jpg">
+        <img src="images/ycasite8.jpg" alt="Billiards &amp; Snooker Room" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Billiards Room</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="games" data-src="images/ycasite57.jpg">
+        <img src="images/ycasite57.jpg" alt="State Skipping Tournament — Youth Cultural Club" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Skipping Championship</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="games" data-src="images/game-zone.jpg">
+        <img src="images/game-zone.jpg" alt="Indoor Game Zone" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Indoor Game Zone</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+
+      <!-- ── FACILITIES ── -->
+      <div class="gallery-item" data-category="facilities" data-src="images/ycasite21.jpg">
+        <img src="images/ycasite21.jpg" alt="Gymnasium &amp; Fitness Center" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Gymnasium</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="facilities" data-src="images/ycasite9.jpg">
+        <img src="images/ycasite9.jpg" alt="Advanced Gym Equipment" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Gym Equipment</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="facilities" data-src="images/ycasite11.jpg">
+        <img src="images/ycasite11.jpg" alt="Gym Cardio Zone" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Gym Cardio Zone</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="facilities" data-src="images/ycasite7.jpg">
+        <img src="images/ycasite7.jpg" alt="Conference Hall Building" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Conference Hall Building</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="facilities" data-src="images/ycasite20.jpg">
+        <img src="images/ycasite20.jpg" alt="Conference Hall Interior" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Conference Hall Interior</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="facilities" data-src="images/ycasite24.jpg">
+        <img src="images/ycasite24.jpg" alt="AC Banquet &amp; Function Hall" loading="lazy">
+        <div class="item-overlay"><span class="item-title">AC Function Hall</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="facilities" data-src="images/ycasite25.jpg">
+        <img src="images/ycasite25.jpg" alt="Conference Hall — Side Elevation" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Conference Hall Exterior</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="facilities" data-src="images/ycasite23.jpg">
+        <img src="images/ycasite23.jpg" alt="Grand Banquet Hall" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Grand Banquet Hall</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="facilities" data-src="images/ycasite3.jpg">
+        <img src="images/ycasite3.jpg" alt="Club Auditorium" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Club Auditorium</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="facilities" data-src="images/kalyanamandapam.jpg">
+        <img src="images/kalyanamandapam.jpg" alt="Kalyana Mandapam" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Kalyana Mandapam</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+
+      <!-- ── ROOMS ── -->
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite26.jpg">
+        <img src="images/ycasite26.jpg" alt="Standard AC Guest Room" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Standard AC Room</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite30.jpg">
+        <img src="images/ycasite30.jpg" alt="Deluxe AC Guest Room" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Deluxe AC Room</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite31.jpg">
+        <img src="images/ycasite31.jpg" alt="Guest Room Corridor" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Room Corridor</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite27.jpg">
+        <img src="images/ycasite27.jpg" alt="Guest Room Interior" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Room Interior</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite28.jpg">
+        <img src="images/ycasite28.jpg" alt="Modern Room Bathroom" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Modern Bathroom</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite29.jpg">
+        <img src="images/ycasite29.jpg" alt="In-Room Amenities" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Room Amenities</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite32.jpg">
+        <img src="images/ycasite32.jpg" alt="Guest Suite View" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Suite View</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite33.jpg">
+        <img src="images/ycasite33.jpg" alt="Deluxe Room Interior" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Deluxe Interior</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite34.jpg">
+        <img src="images/ycasite34.jpg" alt="Executive Suite" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Executive Suite</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite36.jpg">
+        <img src="images/ycasite36.jpg" alt="Luxury Guest Room" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Luxury Room</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite37.jpg">
+        <img src="images/ycasite37.jpg" alt="Club Guest Room" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Guest Room</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="rooms" data-src="images/ycasite38.jpg">
+        <img src="images/ycasite38.jpg" alt="Guest Room with Balcony" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Room with Balcony</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+
+      <!-- ── DINING ── -->
+      <div class="gallery-item" data-category="dining" data-src="images/ycasite6.jpg">
+        <img src="images/ycasite6.jpg" alt="Club Restaurant &amp; Bar" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Restaurant &amp; Bar</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="dining" data-src="images/lounge-bar.jpg">
+        <img src="images/lounge-bar.jpg" alt="Lounge Bar" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Lounge Bar</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="dining" data-src="images/restaurant-hall.jpg">
+        <img src="images/restaurant-hall.jpg" alt="Restaurant Hall" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Restaurant Hall</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+
+      <!-- ── EVENTS ── -->
+      <div class="gallery-item" data-category="events" data-src="images/ycasite53.jpg">
+        <img src="images/ycasite53.jpg" alt="YCA Annual Award Ceremony" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Award Ceremony</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="events" data-src="images/ycasite54.jpg">
+        <img src="images/ycasite54.jpg" alt="Club Community Celebration" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Community Celebration</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="events" data-src="images/ycasite56.jpg">
+        <img src="images/ycasite56.jpg" alt="Sports Prize Distribution" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Prize Distribution</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="events" data-src="images/ycasite58.jpg">
+        <img src="images/ycasite58.jpg" alt="Welfare &amp; Distribution Event" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Distribution Event</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="events" data-src="images/ycasite59.jpg">
+        <img src="images/ycasite59.jpg" alt="Felicitation Ceremony" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Felicitation Ceremony</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="events" data-src="images/ycasite60.jpg">
+        <img src="images/ycasite60.jpg" alt="Tournament Championship Awards" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Championship Awards</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="events" data-src="images/ycasite61.jpg">
+        <img src="images/ycasite61.jpg" alt="Club Gathering &amp; Ceremony" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Club Event Gathering</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+      <div class="gallery-item" data-category="events" data-src="images/ycasite62.jpg">
+        <img src="images/ycasite62.jpg" alt="Classical Bharatanatyam Cultural Performance" loading="lazy">
+        <div class="item-overlay"><span class="item-title">Bharatanatyam Performance</span><span class="zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-arrow prev" id="lbPrev" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+  <div class="lightbox-inner"><img src="" alt="Gallery photo" id="lbImg"></div>
+  <button class="lb-arrow next" id="lbNext" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="lb-bottom-bar">
+    <div class="lb-caption" id="lbCaption"></div>
+    <div class="lb-counter" id="lbCounter">1 / 52</div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo"><img src="images/logo.png" alt="Youth Cultural Association Logo"></a>
+        <p>Tammi Raju Nagar, Bhimavaram, Andhra Pradesh 534204</p>
+        <div class="dot-socials"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="contact.html">Contact info</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Meet Youth Club</h4>
+        <ul>
+          <li><a href="#">Terms and conditions</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Work with us</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Map</h4>
+        <div class="footer-map">
+          <iframe src="https://maps.google.com/maps?q=Youth+Cultural+Club+Bhimavaram+Andhra+Pradesh&output=embed&z=15" loading="lazy" title="Youth Cultural Club Location"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&#169; 2026 Youth Cultural Association. All Rights Reserved.</span>
+      <span>Bhimavaram, Andhra Pradesh, India</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="js/script.js"></script>
+<script>
+  (function() {
+    const overlay = document.getElementById('loadingOverlay');
+    if (overlay) {
+      const isReload = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+      const isInternal = document.referrer && document.referrer.startsWith(window.location.origin);
+      if (isReload || !isInternal) {
+        setTimeout(() => { overlay.style.opacity = '0'; overlay.addEventListener('transitionend', () => overlay.remove()); }, 1500);
+      } else { overlay.remove(); }
+    }
+  })();
+
+  (function() {
+    const tabs    = document.querySelectorAll('.gal-tab');
+    const items   = Array.from(document.querySelectorAll('.gallery-item'));
+    const countEl = document.getElementById('visibleCount');
+    const lightbox= document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+    const lbPrev  = document.getElementById('lbPrev');
+    const lbNext  = document.getElementById('lbNext');
+    const lbCtr   = document.getElementById('lbCounter');
+    const lbCaption = document.getElementById('lbCaption');
+    let visible   = [...items];
+    let current   = 0;
+
+    function updateCount() { countEl.textContent = visible.length; }
+    updateCount();
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const f = tab.dataset.filter;
+        visible = [];
+        items.forEach(item => {
+          const match = f === 'all' || item.dataset.category === f;
+          item.classList.toggle('hidden', !match);
+          if (match) visible.push(item);
+        });
+        updateCount();
+      });
+    });
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        current = visible.indexOf(item);
+        if (current === -1) return;
+        showLb(current);
+      });
+    });
+
+    function showLb(idx) {
+      lbImg.style.opacity = '0';
+      setTimeout(() => {
+        const item = visible[idx];
+        const itemImg = item.querySelector('img');
+        const titleEl = item.querySelector('.item-title');
+        lbImg.src = item.dataset.src;
+        lbImg.alt = itemImg ? itemImg.alt : '';
+        lbImg.style.opacity = '1';
+        if (lbCaption) lbCaption.textContent = titleEl ? titleEl.textContent : (itemImg ? itemImg.alt : '');
+        lbCtr.textContent = (idx + 1) + ' / ' + visible.length;
+      }, 80);
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLb() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+    lbClose.addEventListener('click', closeLb);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+    lbPrev.addEventListener('click', () => { current = (current - 1 + visible.length) % visible.length; showLb(current); });
+    lbNext.addEventListener('click', () => { current = (current + 1) % visible.length; showLb(current); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft')  { current = (current - 1 + visible.length) % visible.length; showLb(current); }
+      if (e.key === 'ArrowRight') { current = (current + 1) % visible.length; showLb(current); }
+      if (e.key === 'Escape')     closeLb();
+    });
+  })();
+</script>
+</body>
+</html>
